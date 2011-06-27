@@ -46,3 +46,6 @@
 [submodule "home/.vim/bundle/vim-surround"]
 	path = home/.vim/bundle/vim-surround
 	url = git://github.com/tpope/vim-surround.git
+[submodule "home/.vim/bundle/AutoTag"]
+	path = home/.vim/bundle/AutoTag
+	url = git://github.com/vim-scripts/AutoTag.git
