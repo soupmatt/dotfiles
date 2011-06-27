@@ -76,22 +76,25 @@ if has("autocmd")
 
   augroup END
 
-  autocmd VimEnter * NERDTree
-  autocmd VimEnter * wincmd p
-  autocmd BufEnter * NERDTreeMirror
+  if !exists("g:vimpager")
+    " we don't want to load nerdtree stuff if we are working as a pager!
+    autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+    autocmd BufEnter * NERDTreeMirror
 
-  autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-  " Close all open buffers on entering a window if the only
-  " buffer that's left is the NERDTree buffer
-  function! s:CloseIfOnlyNerdTreeLeft()
-    if exists("t:NERDTreeBufName")
-      if bufwinnr(t:NERDTreeBufName) != -1
-        if winnr("$") == 1
-          q
+    autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+    " Close all open buffers on entering a window if the only
+    " buffer that's left is the NERDTree buffer
+    function! s:CloseIfOnlyNerdTreeLeft()
+      if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+          if winnr("$") == 1
+            q
+          endif
         endif
       endif
-    endif
-  endfunction
+    endfunction
+  endif
 
 else
 
