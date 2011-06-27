@@ -140,4 +140,4 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 :set dir=~/tmp/vim
 
 " make the search for ctags a little smarter
-:set tags=./tags;/
+":set tags=./tags;/
