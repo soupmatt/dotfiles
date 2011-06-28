@@ -105,7 +105,7 @@ endif " has("autocmd")
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
 command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
+      \ | wincmd p | diffthis
 
 " autocomplete
 function InsertTabWrapper()
@@ -117,6 +117,9 @@ function InsertTabWrapper()
   endif
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+" clear search highlighting with esc
+nnoremap <esc> :noh<return><esc>
 
 " toggle nerdtree with o
 map <leader>o :NERDTreeToggle<CR>
@@ -139,5 +142,6 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " make vim put swp files in a dir
 :set dir=~/tmp/vim
 
-" make the search for ctags a little smarter
-":set tags=./tags;/
+compiler rubyunit
+nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>
+nmap <leader>s :cf ~/tmp/autotest.txt<cr> :compiler rspec<cr>
