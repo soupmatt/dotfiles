@@ -145,3 +145,4 @@ map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 compiler rubyunit
 nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>
 nmap <leader>s :cf ~/tmp/autotest.txt<cr> :compiler rspec<cr>
+nmap <leader>r :!powder restart<cr>
