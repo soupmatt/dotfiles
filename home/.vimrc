@@ -119,9 +119,6 @@ map <C-[> :pop<cr>
 " open ctag in tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-" make vim put swp files in a dir
-:set dir=~/tmp/vim
-
 compiler rubyunit
 nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>
 nmap <leader>s :cf ~/tmp/autotest.txt<cr> :compiler rspec<cr>
