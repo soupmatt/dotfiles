@@ -117,7 +117,7 @@ map <C-t> :tabnew<cr>
 map <C-[> :pop<cr>
 
 " open ctag in tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 compiler rubyunit
 nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>

@@ -1,0 +1,2 @@
+#ssh_options[:verbose] = :debug
+ssh_options[:config] = true
