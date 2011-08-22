@@ -46,3 +46,12 @@
 [submodule "home/.vim/bundle/AutoTag"]
 	path = home/.vim/bundle/AutoTag
 	url = git://github.com/vim-scripts/AutoTag.git
+[submodule "home/.vim/bundle/vim-bundler"]
+	path = home/.vim/bundle/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "home/.vim/bundle/vim-commentary"]
+	path = home/.vim/bundle/vim-commentary
+	url = git://github.com/tpope/vim-commentary.git
+[submodule "home/.vim/bundle/vim-repeat"]
+	path = home/.vim/bundle/vim-repeat
+	url = git://github.com/tpope/vim-repeat.git

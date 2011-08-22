@@ -98,6 +98,10 @@ function InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 
+" coffee script stuff
+" use 2 spaces in .coffee files
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
 " clear search highlighting with esc
 nnoremap <esc> :noh<return><esc>
 
@@ -112,14 +116,13 @@ map <C-l> :tabnext<cr>
 map <C-h> :tabprevious<cr>
 map <C-t> :tabnew<cr>
 
-" pop off the tab stack with C-[ instead of C-T, as we use C-T to create a new
-" tab
+" pop off the tab stack with C-[ instead of C-T, as we use C-T to create a new tab
 map <C-[> :pop<cr>
 
 " open ctag in tab
-" map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
-compiler rubyunit
-nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>
-nmap <leader>s :cf ~/tmp/autotest.txt<cr> :compiler rspec<cr>
-nmap <leader>r :!powder restart<cr>
+" compiler rubyunit
+" nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>
+" nmap <leader>s :cf ~/tmp/autotest.txt<cr> :compiler rspec<cr>
+" nmap <leader>r :!powder restart<cr>

@@ -15,6 +15,5 @@ fi
 
 hookup post-checkout "$@"
 .git/hooks/ctags >/dev/null 2>&1 &
-powder restart &
-
+.git/hooks/powder &
 
