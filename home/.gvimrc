@@ -1,5 +1,5 @@
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd p
 autocmd BufEnter * NERDTreeMirror
 
 autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
