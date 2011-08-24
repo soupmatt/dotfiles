@@ -102,27 +102,30 @@ inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 " use 2 spaces in .coffee files
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
-" clear search highlighting with esc
-nnoremap <esc> :noh<return><esc>
-
 " toggle nerdtree with o
 map <leader>o :NERDTreeToggle<CR>
 
 " find in nerdtree with f
 map <leader>f :NERDTreeFind<CR>
 
+" pop off the tab stack with C-[ instead of C-T, as we use C-T to create a new tab
+" map <C-[> :pop<cr>
+
+" clear search highlighting with esc
+" nnoremap <esc> :noh<return><esc>
+
+" open ctag in tab
+map <C-\> :tab split<CR>:exec('tag '.expand('<cword>'))<CR>
+
 " switch tabs
 map <C-l> :tabnext<cr>
 map <C-h> :tabprevious<cr>
 map <C-t> :tabnew<cr>
 
-" pop off the tab stack with C-[ instead of C-T, as we use C-T to create a new tab
-map <C-[> :pop<cr>
-
-" open ctag in tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" shortcut for powder restart
+nmap <leader>r :!powder restart<cr>
 
 " compiler rubyunit
 " nmap <leader>au :cf ~/tmp/autotest.txt<cr> :compiler rubyunit<cr>
 " nmap <leader>s :cf ~/tmp/autotest.txt<cr> :compiler rspec<cr>
-" nmap <leader>r :!powder restart<cr>
+
