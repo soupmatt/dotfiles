@@ -1,0 +1,41 @@
+colorscheme torte
+
+" coffee script stuff
+" use 2 spaces in .coffee files
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" open ctag in tab
+map <C-\> :tab split<CR>:exec('tag '.expand('<cword>'))<CR>
+
+" switch tabs
+map <C-l> :tabnext<cr>
+map <C-h> :tabprevious<cr>
+
+" switch buffers with tab key
+noremap <tab> <C-w><C-w>
+
+" shortcuts for :Ack
+nnoremap <leader>sa :Ack 
+
+" Rotating among results in an ack search
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
+
+" Quick close window
+map <leader>q :q<CR>
+
+" autoclose stuff
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' }
+let g:AutoCloseProtectedRegions = ["Character"]
+
+" shortcut for powder restart with r
+map <leader>p :!powder restart<cr>
+
+" rerun ctags generation script with c
+map <leader>rt :!.git/hooks/ctags &<cr>
+
+map <leader>f :NERDTreeFind<cr>
+
+autocmd BufEnter * NERDTreeMirror
+
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P

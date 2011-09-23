@@ -13,8 +13,8 @@ Autotest.add_hook :ran_command do |at|
   }
 end
 
-Autotest.add_hook :initialize do |autotest|  
-  %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|  
-    autotest.add_exception(exception)  
-  end  
-end  
+Autotest.add_hook :initialize do |autotest|
+  %w{.git .svn .hg .DS_Store ._* vendor tmp log doc}.each do |exception|
+    autotest.add_exception(exception)
+  end
+end
