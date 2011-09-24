@@ -2,6 +2,8 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
+export rvm_path="$HOME/.rvm"
+
 PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
 export PS1
 
@@ -40,4 +42,5 @@ export PATH=$HOME/bin:/usr/local/mysql/bin:$PATH
 
 export LC_ALL=en_US.UTF-8
 
+[[ -s "/Users/MattCampbell/.rvm/scripts/rvm" ]] && source "/Users/MattCampbell/.rvm/scripts/rvm"
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
