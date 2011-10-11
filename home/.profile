@@ -18,6 +18,7 @@ fi
 
 export EDITOR="vim"
 export GIT_EDITOR="vim"
+export GEM_EDITOR="mvim"
 export PAGER="vimpager"
 export LESS="-R"
 
