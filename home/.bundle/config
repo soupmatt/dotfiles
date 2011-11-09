@@ -1,0 +1,3 @@
+---
+   BUNDLE_PATH: .rbenv/bundle
+   BUNDLE_DISABLE_SHARED_GEMS: "1"

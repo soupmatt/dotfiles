@@ -41,4 +41,4 @@ map <leader>f :NERDTreeFind<cr>
 
 autocmd BufEnter * NERDTreeMirror
 
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%{exists('g:loaded_rvm')?rvm#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%{exists('g:loaded_rbenv')?rbenv#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
