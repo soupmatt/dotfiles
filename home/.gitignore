@@ -2,3 +2,4 @@
 tags
 *.swp
 .rbenv/bundle
+.bundle
