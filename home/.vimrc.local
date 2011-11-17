@@ -7,6 +7,9 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 " .infinity_test is a ruby file
 au BufRead,BufNewFile *.infinity_test set filetype=ruby
 
+" strip trailing whitespace from current buffer
+:nnoremap <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
 " open ctag in tab
 map <C-\> :tab split<CR>:exec('tag '.expand('<cword>'))<CR>
 
@@ -18,7 +21,7 @@ map <C-h> :tabprevious<cr>
 noremap <tab> <C-w><C-w>
 
 " shortcuts for :Ack
-nnoremap <leader>sa :Ack 
+nnoremap <leader>sa :Ack
 
 " Rotating among results in an ack search
 map <C-n> :cn<CR>
@@ -41,4 +44,4 @@ map <leader>f :NERDTreeFind<cr>
 
 autocmd BufEnter * NERDTreeMirror
 
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%{exists('g:loaded_rbenv')?rbenv#statusline():''}%=%-16(\ %l,%c-%v\ %)%P
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P

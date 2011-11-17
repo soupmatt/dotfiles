@@ -12,10 +12,9 @@ if [ -f $HOME/.nvm/nvm.sh ]; then
 fi
 
 export EDITOR="vim"
-export GUI_EDITOR="mvim"
+export VISUAL="mvim"
 export GIT_EDITOR=$EDITOR
-export GEM_EDITOR=$GUI_EDITOR
-export HOMEBREW_EDITOR=$GUI_EDITOR
+export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
 export LESS="-R"
 
@@ -58,4 +57,8 @@ fi
 if [ -x $HOME/.rbenv/bin/rbenv ]; then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
+fi
+
+if [ -f $HOME/dev/opensource/bundler-exec/bundler-exec.sh ]; then
+  source $HOME/dev/opensource/bundler-exec/bundler-exec.sh
 fi
