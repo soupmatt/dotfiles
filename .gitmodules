@@ -25,3 +25,12 @@
 [submodule "home/.janus/vim-eunuch"]
 	path = home/.janus/vim-eunuch
 	url = git://github.com/tpope/vim-eunuch.git
+[submodule "home/.rbenv"]
+	path = home/.rbenv
+	url = git://github.com/sstephenson/rbenv.git
+[submodule "home/.rbenv-plugins/rbenv-vars"]
+	path = home/.rbenv-plugins/rbenv-vars
+	url = git://github.com/sstephenson/rbenv-vars.git
+[submodule "home/.rbenv-plugins/rbenv-each"]
+	path = home/.rbenv-plugins/rbenv-each
+	url = git://github.com/chriseppstein/rbenv-each.git
