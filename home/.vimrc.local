@@ -4,6 +4,9 @@ colorscheme torte
 " use 2 spaces in .coffee files
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
+" .autotest is a ruby file
+au BufRead,BufNewFile *.autotest set filetype=ruby
+
 " .infinity_test is a ruby file
 au BufRead,BufNewFile *.infinity_test set filetype=ruby
 
@@ -27,9 +30,6 @@ nnoremap <leader>sa :Ack
 map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
-" Quick close window
-map <leader>q :q<CR>
-
 " autoclose stuff
 let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' }
 let g:AutoCloseProtectedRegions = ["Character"]
@@ -42,6 +42,6 @@ map <leader>rt :!.git/hooks/ctags &<cr>
 
 map <leader>f :NERDTreeFind<cr>
 
-autocmd BufEnter * NERDTreeMirror
+" autocmd BufEnter * NERDTreeMirror
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%{fugitive#statusline()}%=%-16(\ %l,%c-%v\ %)%P

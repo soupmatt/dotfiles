@@ -31,6 +31,7 @@ alias ll="ls -lhG"
 alias sl="ls"
 alias sd="say all done"
 alias be="bundle exec"
+alias pairtmux="tmux -S /tmp/tmux/pair"
 
 export COMMAND_MODE=unix2003
 

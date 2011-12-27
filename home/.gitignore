@@ -1,5 +1,3 @@
 .DS\_Store
-tags
 *.swp
-.rbenv/bundle
 .bundle
