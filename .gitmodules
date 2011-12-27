@@ -4,3 +4,24 @@
 [submodule "home/.nvm"]
 	path = home/.nvm
 	url = git://github.com/creationix/nvm.git
+[submodule "home/.janus/vim-bundler"]
+	path = home/.janus/vim-bundler
+	url = git://github.com/tpope/vim-bundler.git
+[submodule "home/.janus/vim-rake"]
+	path = home/.janus/vim-rake
+	url = git://github.com/tpope/vim-rake.git
+[submodule "home/.janus/vim-ruby-sinatra"]
+	path = home/.janus/vim-ruby-sinatra
+	url = git://github.com/hallison/vim-ruby-sinatra.git
+[submodule "home/.janus/vim-autoclose"]
+	path = home/.janus/vim-autoclose
+	url = git://github.com/Townk/vim-autoclose.git
+[submodule "home/.janus/vim-extradite"]
+	path = home/.janus/vim-extradite
+	url = git://github.com/int3/vim-extradite.git
+[submodule "home/.janus/nginx.vim"]
+	path = home/.janus/nginx.vim
+	url = git://github.com/vim-scripts/nginx.vim.git
+[submodule "home/.janus/vim-eunuch"]
+	path = home/.janus/vim-eunuch
+	url = git://github.com/tpope/vim-eunuch.git

@@ -1,0 +1,40 @@
+colorscheme torte
+
+" coffee script stuff
+" use 2 spaces in .coffee files
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" .autotest is a ruby file
+au BufRead,BufNewFile *.autotest set filetype=ruby
+
+" .infinity_test is a ruby file
+au BufRead,BufNewFile *.infinity_test set filetype=ruby
+
+" strip trailing whitespace from current buffer
+:nnoremap <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" open ctag in tab
+map <C-\> :tab split<CR>:exec('tag '.expand('<cword>'))<CR>
+
+" switch tabs
+map <C-l> :tabnext<cr>
+map <C-h> :tabprevious<cr>
+
+" switch buffers with tab key
+noremap <tab> <C-w><C-w>
+
+" Rotating among results in an ack search
+map <C-n> :cn<CR>
+map <C-p> :cp<CR>
+
+" autoclose stuff
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' }
+let g:AutoCloseProtectedRegions = ["Character"]
+
+" shortcut for powder restart with r
+map <leader>p :!powder restart<cr>
+
+" rerun ctags generation script with ct
+map <leader>ct :!.git/hooks/ctags &<cr>
+
+map <leader>f<Space> :NERDTreeFind<cr>
