@@ -2,8 +2,6 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-#export rvm_path="$HOME/.rvm"
-
 PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
 export PS1
 
@@ -21,6 +19,9 @@ export LESS="-R"
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
 
+export CFLAGS="-g -O2"
+export MAKEFLAGS="-j5"
+
 if [ -f .profile_private ]; then
   . .profile_private
 fi
@@ -30,8 +31,6 @@ alias la="ls -alhG"
 alias ll="ls -lhG"
 alias sl="ls"
 alias sd="say all done"
-alias be="bundle exec"
-alias pairtmux="tmux -S /tmp/tmux/pair"
 
 export COMMAND_MODE=unix2003
 
@@ -41,14 +40,16 @@ export PATH=$HOME/bin:/usr/local/mysql/bin:$PATH
 
 export LC_ALL=en_US.UTF-8
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+#export rvm_path="$HOME/.rvm"
 
-[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 
-if [ -f $rvm_path/contrib/ps1_functions ]; then
-  . $rvm_path/contrib/ps1_functions
-  ps1_set --notime
-fi
+#[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+
+#if [ -f $rvm_path/contrib/ps1_functions ]; then
+  #. $rvm_path/contrib/ps1_functions
+  #ps1_set --notime
+#fi
 
 if [ -f $HOME/.ps1_functions ]; then
   . $HOME/.ps1_functions
@@ -60,6 +61,6 @@ if [ -x $HOME/.rbenv/bin/rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
-if [ -f $HOME/dev/opensource/bundler-exec/bundler-exec.sh ]; then
-  source $HOME/dev/opensource/bundler-exec/bundler-exec.sh
-fi
+#if [ -f $HOME/dev/opensource/bundler-exec/bundler-exec.sh ]; then
+  #source $HOME/dev/opensource/bundler-exec/bundler-exec.sh
+#fi

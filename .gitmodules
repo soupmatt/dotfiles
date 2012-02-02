@@ -34,3 +34,9 @@
 [submodule "home/.rbenv-plugins/rbenv-each"]
 	path = home/.rbenv-plugins/rbenv-each
 	url = git://github.com/chriseppstein/rbenv-each.git
+[submodule "home/.janus/vim-turbux"]
+	path = home/.janus/vim-turbux
+	url = git://github.com/jgdavey/vim-turbux.git
+[submodule "home/.janus/jgdavey-tslime"]
+	path = home/.janus/jgdavey-tslime
+	url = https://github.com/jgdavey/tslime.vim.git

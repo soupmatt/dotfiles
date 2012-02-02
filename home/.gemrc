@@ -7,3 +7,5 @@
 - http://gems.github.com
 :verbose: true
 :benchmark: false
+gem: --no-ri --no-rdoc
+custom_shebang: $env ruby_bundler_wrapper

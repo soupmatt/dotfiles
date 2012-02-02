@@ -1,3 +1,5 @@
 .DS\_Store
 *.swp
 .bundle
+.idea
+doc/tags
