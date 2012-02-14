@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+if ARGV[0] == '-r'
+  system "gem list | cut -d\" \" -f1 | xargs gem uninstall -aIx"
+end
+
+#system "gem install rdoc"
+
+#if RUBY_VERSION == "1.8.7"
+  #system "gem install rdoc-data"
+  #system "rdoc-data --install"
+#end
+
+system "gem install rubygems-bundler"
+system "gem install gem-ctags"
+system "gem install bundler --pre"
+system "gem install rake gem-browse hookup github powder homesick"
+#system "gem install ZenTest autotest-growl autotest-fsevent"
+#system "gem install chef"
+#system "gem install github-markup"
