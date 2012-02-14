@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tmux_dir=/tmp/tmux
+
+if [ ! -d $tmux_dir ]; then
+  echo "recreating $tmux_dir"
+  mkdir -p $tmux_dir
+  chown $USER:staff $tmux_dir
+  chmod +t,g+w $tmux_dir
+fi
+
+tmux -S /tmp/tmux/pair $@
