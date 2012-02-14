@@ -9,3 +9,9 @@ call janus#disable_plugin('scala')
 call janus#disable_plugin('pep8')
 call janus#disable_plugin('vimwiki')
 call janus#disable_plugin('hammer')
+
+" Tell turbux to not map by default
+let g:no_turbux_mappings = 1
+
+" Trigger snipmat with C-<Space>
+let g:snips_trigger_key = '<C-Space>'

@@ -34,9 +34,9 @@ ps1_titlebar()
 ps1_identity()
 {
   if (( $UID == 0 )) ; then
-    printf "%s" "\[\033[31m\]\\u\[\033[0m\]@\[\033[36m\]\\h\[\033[35m\]:\w\[\033[0m\] "
+    printf "%s" "\[\033[31m\]\\u\[\033[0m\]@\[\033[36m\]\\h\[\033[35m\]:\w\[\033[0m\]"
   else
-    printf "%s" "\[\033[32m\]\\u\[\033[0m\]@\[\033[36m\]\\h\[\033[35m\]:\w\[\033[0m\] "
+    printf "%s" "\[\033[32m\]\\u\[\033[0m\]@\[\033[36m\]\\h\[\033[35m\]:\w\[\033[0m\]"
   fi
 }
 
@@ -51,11 +51,11 @@ ps1_git()
     return 0
   }
 
-  branch=$(git symbolic-ref -q HEAD 2>/dev/null) || return 0 # Not in git repo.
+  sha1=$(git rev-parse --short --quiet HEAD 2>/dev/null) || return 0 # Not in git repo.
+  branch=$(git symbolic-ref -q HEAD 2>/dev/null)
   branch=${branch##refs/heads/}
 
   # Now we display the branch.
-  sha1=$(git rev-parse --short --quiet HEAD)
 
   case "${branch:-"(no branch)"}" in
    production|prod) attr="1;37m\033[" ; color=41 ;; # red
@@ -67,13 +67,12 @@ ps1_git()
      if [[ -n "${branch}" ]] ; then # Feature Branch :)
        color=32 # green
      else
-       color=0 # reset
+       color=36 # grey
      fi
      ;;
   esac
 
-  [[ $color -gt 0 ]] &&
-    printf "\[\033[${attr}${color}m\](git:${branch}$(ps1_git_status):$sha1)\[\033[0m\] "
+  printf " \[\033[${attr}${color}m\](git:${branch:-"(no branch)"}$(ps1_git_status):$sha1)\[\033[0m\]"
 }
 
 ps1_git_status()
@@ -87,12 +86,19 @@ ps1_git_status()
 
 ps1_rbenv()
 {
-  command -v rbenv >/dev/null 2>&1 && printf "%s" " $(rbenv version-name) "
+  command -v rbenv >/dev/null 2>&1 && printf "%s" " $(rbenv version-name)"
+}
+
+ps1_rvm()
+{
+  # rvm is yellow so we can easily tell
+  command -v rvm-prompt >/dev/null 2>&1 && printf "%s" " \[\033[33m\]$(rvm-prompt)\[\033[0m\]"
 }
 
 ps1_update()
 {
   local prompt_char='$' separator="\n" notime=0
+  local ruby_version=''
 
   (( $UID == 0 )) && prompt_char='#'
 
@@ -124,10 +130,16 @@ ps1_update()
     esac
   done
 
-  if (( notime > 0 )) ; then
-    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)$(ps1_rbenv)${separator}${prompt_char} "
+  if [[ "x$USE_RVM" = "xtrue" ]]; then
+    ruby_version=$(ps1_rvm)
   else
-    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)$(ps1_rbenv)${separator}${prompt_char} "
+    ruby_version=$(ps1_rbenv)
+  fi
+
+  if (( notime > 0 )) ; then
+    PS1="$(ps1_titlebar)$(ps1_identity)$(ps1_git)${ruby_version}${separator}${prompt_char} "
+  else
+    PS1="$(ps1_titlebar)\D{%H:%M:%S} $(ps1_identity)$(ps1_git)${ruby_version}${separator}${prompt_char} "
   fi
 }
 

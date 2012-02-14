@@ -59,12 +59,15 @@ endfunction
 
 autocmd BufEnter * NERDTreeMirror
 
-" Trigger snipmat with C-<Space>
-let g:snips_trigger_key = '<C-Space>'
-
 " turn on the mouse
 set mouse=a
 
 " disable janus <C-T> mapping for CtrlP
-unmap <C-T>
-iunmap <C-T>
+if !(has("gui_macvim") && has("gui_running"))
+  unmap <C-T>
+  iunmap <C-T>
+endif
+
+" mappings for turbux
+nmap <leader>s <Plug>SendTestToTmux
+nmap <leader>S <Plug>SendFocusedTestToTmux

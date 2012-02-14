@@ -10,7 +10,7 @@ if [ -f $HOME/.nvm/nvm.sh ]; then
 fi
 
 export EDITOR="vim"
-export VISUAL="mvim"
+export VISUAL="vim"
 export GIT_EDITOR=$EDITOR
 export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
@@ -19,7 +19,7 @@ export LESS="-R"
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
 
-export CFLAGS="-g -O2"
+export CFLAGS="-g -Os"
 export MAKEFLAGS="-j5"
 
 if [ -f .profile_private ]; then
@@ -40,27 +40,18 @@ export PATH=$HOME/bin:/usr/local/mysql/bin:$PATH
 
 export LC_ALL=en_US.UTF-8
 
-#export rvm_path="$HOME/.rvm"
-
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-
-#[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-
-#if [ -f $rvm_path/contrib/ps1_functions ]; then
-  #. $rvm_path/contrib/ps1_functions
-  #ps1_set --notime
-#fi
+if [ "x$USE_RVM" = "xtrue" ]; then
+  export rvm_path="$HOME/.rvm"
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
+  [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+else
+  if [ -x $HOME/.rbenv/bin/rbenv ]; then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+  fi
+fi
 
 if [ -f $HOME/.ps1_functions ]; then
   . $HOME/.ps1_functions
-  ps1_set --notime
+  ps1_set
 fi
-
-if [ -x $HOME/.rbenv/bin/rbenv ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-#if [ -f $HOME/dev/opensource/bundler-exec/bundler-exec.sh ]; then
-  #source $HOME/dev/opensource/bundler-exec/bundler-exec.sh
-#fi
