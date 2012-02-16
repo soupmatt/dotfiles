@@ -38,15 +38,20 @@ export GRAILS_OPTS="-server -Xmx512M -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 
 
 export PATH=$HOME/bin:/usr/local/mysql/bin:$PATH
 
+#make it so we have either rbenv or rvm loaded, but not both
+NO_RUBY_PATH=${NO_RUBY_PATH:=$PATH}
+export NO_RUBY_PATH
+
 export LC_ALL=en_US.UTF-8
 
 if [ "x$USE_RVM" = "xtrue" ]; then
   export rvm_path="$HOME/.rvm"
+  export PATH=$NO_RUBY_PATH
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
   [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 else
   if [ -x $HOME/.rbenv/bin/rbenv ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/bin:$NO_RUBY_PATH"
     eval "$(rbenv init -)"
   fi
 fi
@@ -55,3 +60,5 @@ if [ -f $HOME/.ps1_functions ]; then
   . $HOME/.ps1_functions
   ps1_set
 fi
+
+keychain -q
