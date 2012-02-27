@@ -31,6 +31,7 @@ alias la="ls -alhG"
 alias ll="ls -lhG"
 alias sl="ls"
 alias sd="say all done"
+eval $(hub alias -s bash)
 
 export COMMAND_MODE=unix2003
 
