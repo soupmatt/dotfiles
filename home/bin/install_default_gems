@@ -13,7 +13,7 @@ end
 
 system "gem install rubygems-bundler"
 system "gem install gem-ctags"
-system "gem install bundler --pre"
+system "gem install bundler"
 system "gem install rake gem-browse hookup powder homesick wirble"
 #system "gem install ZenTest autotest-growl autotest-fsevent"
 #system "gem install chef"
