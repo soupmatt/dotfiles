@@ -32,6 +32,7 @@ alias ll="ls -lhG"
 alias sl="ls"
 alias sd="say all done"
 eval $(hub alias -s bash)
+alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
 
 export COMMAND_MODE=unix2003
 
