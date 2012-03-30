@@ -63,9 +63,11 @@ autocmd BufEnter * NERDTreeMirror
 set mouse=a
 
 " disable janus <C-T> mapping for CtrlP
+" set the mouse to xterm2
 if !(has("gui_macvim") && has("gui_running"))
   unmap <C-T>
   iunmap <C-T>
+  set ttymouse=xterm2
 endif
 
 " mappings for turbux
