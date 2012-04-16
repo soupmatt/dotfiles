@@ -16,6 +16,10 @@ export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
 export LESS="-R"
 
+export TORQUEBOX_HOME=$HOME/dev/jruby/torquebox-current
+export JBOSS_HOME=$TORQUEBOX_HOME/jboss
+export JRUBY_HOME=$TORQUEBOX_HOME/jruby
+
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
 
@@ -33,6 +37,7 @@ alias sl="ls"
 alias sd="say all done"
 eval $(hub alias -s bash)
 alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
+alias tjruby="$JRUBY_HOME/bin/jruby"
 
 export COMMAND_MODE=unix2003
 

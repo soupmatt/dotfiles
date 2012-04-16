@@ -1,5 +1,2 @@
-JRUBY_OPTS=--1.9
-JAVA_OPTS=-d32 -client
 USE_BUNDLER=try
-BUNDLER_BLACKLIST=heroku hookup github powder homesick travis-lint foreman amqp-deleteq amqp-purge amqp-spy amqp-statq amqp-peek
-
+BUNDLER_BLACKLIST=heroku hookup github powder homesick travis-lint foreman amqp-deleteq amqp-purge amqp-spy amqp-statq amqp-peek torquebox
