@@ -14,8 +14,10 @@ au BufRead,BufNewFile *.infinity_test set filetype=ruby
 :nnoremap <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " switch tabs
-"map <C-l> :tabnext<cr>
-"map <C-h> :tabprevious<cr>
+map th :tabnext<CR>
+map tl :tabprev<CR>
+map tn :tabnew<CR>
+map td :tabclose<CR>
 
 " switch buffers with tab key
 noremap <tab> <C-w><C-w>
@@ -37,30 +39,36 @@ map <leader>ct :!.git/hooks/ctags &<cr>
 " find current file in NERDTree
 map <leader>f<Space> :NERDTreeFind<cr>
 
+" toggle NERDTree in every tab
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
+
+" open a NERDTree if no file was specified
+autocmd vimenter * if !argc() | NERDTree | endif |
+
+" close the window if the last thing is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif |
+
+"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+"function! s:CloseIfOnlyNerdTreeLeft()
+  "if exists("t:NERDTreeBufName")
+    "if bufwinnr(t:NERDTreeBufName) != -1
+      "if winnr("$") == 1
+        "q
+      "endif
+    "endif
+  "endif
+"endfunction
+
 " open ctag in tab - currently doesn't work :(
 "map <C-\> :tab split<CR>:exec('tag '.expand('<cword>'))<CR>
 
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
-function! s:CloseIfOnlyNerdTreeLeft()
-  if exists("t:NERDTreeBufName")
-    if bufwinnr(t:NERDTreeBufName) != -1
-      if winnr("$") == 1
-        q
-      endif
-    endif
-  endif
-endfunction
-
-" auto open nerdtree - not work correclty
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * wincmd p
-
-autocmd BufEnter * NERDTreeMirror
-
 " turn on the mouse
 set mouse=a
+
+" map the unnamed register to the OSX clipboard
+set clipboard=unnamed
 
 " disable janus <C-T> mapping for CtrlP
 " set the mouse to xterm2
