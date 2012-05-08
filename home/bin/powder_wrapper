@@ -1,0 +1,11 @@
+#!/bin/sh
+
+rbenv version | grep jruby >/dev/null
+jruby_check=$?
+
+if [ -f config.ru ] && [ $jruby_check ] && command -v powder >/dev/null
+then
+  exec powder $@
+else
+  echo "Sorry, no powder here" 1>&2
+fi

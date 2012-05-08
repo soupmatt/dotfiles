@@ -1,7 +1,0 @@
-#!/bin/sh
-
-if [ -f config.ru ] && command -v powder >/dev/null
-then
-  powder restart
-fi
-
