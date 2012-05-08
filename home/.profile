@@ -16,12 +16,17 @@ export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
 export LESS="-R"
 
-export TORQUEBOX_HOME=$HOME/dev/jruby/torquebox-current
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+export TORQUEBOX_HOME=$HOME/dev/torquebox/current
 export JBOSS_HOME=$TORQUEBOX_HOME/jboss
 export JRUBY_HOME=$TORQUEBOX_HOME/jruby
 
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
+
+MAVEN_OPTS="-XX:MaxPermSize=128m -Xmx512M"
+export MAVEN_OPTS
 
 export CFLAGS="-g -Os"
 export MAKEFLAGS="-j5"
@@ -43,7 +48,7 @@ export COMMAND_MODE=unix2003
 
 export GRAILS_OPTS="-server -Xmx512M -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
 
-export PATH=$HOME/bin:/usr/local/mysql/bin:$PATH
+export PATH="/usr/local/mysql/bin:$PATH"
 
 #make it so we have either rbenv or rvm loaded, but not both
 NO_RUBY_PATH=${NO_RUBY_PATH:=$PATH}
@@ -62,6 +67,8 @@ else
     eval "$(rbenv init -)"
   fi
 fi
+PATH=".bundle/safe/../bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
 if [ -f $HOME/.ps1_functions ]; then
   . $HOME/.ps1_functions
