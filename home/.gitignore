@@ -3,3 +3,4 @@
 .idea
 doc/tags
 .bundle
+.rbenv-gemsets

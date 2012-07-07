@@ -6,5 +6,5 @@ end
 
 # system "gem install rubygems-bundler"
 # system "gem install gem-ctags"
-system "gem install bundler"
-system "gem install rake gem-browse hookup powder homesick wirble lunchy"
+system "gem install bundler --pre"
+system "gem install rake gem-browse hookup powder homesick wirble lunchy pry pry-doc"
