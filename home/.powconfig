@@ -1,5 +1,5 @@
 export POW_DST_PORT=88
-export POW_WORKERS=3
+export POW_WORKERS=5
 export NEWRELIC_DISPATCHER=pow
 
 # we have rvm installed, but we don't want pow to use it
