@@ -1,5 +1,5 @@
 --- 
 BUNDLE_WITHOUT: linux
 #BUNDLE_PATH: .bundle/gems
-BUNDLE_BIN: .bundle/bin
+#BUNDLE_BIN: .bundle/bin
 BUNDLE_CLEAN: true
