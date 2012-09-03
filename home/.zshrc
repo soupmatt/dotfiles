@@ -12,7 +12,7 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 export TORQUEBOX_HOME=$HOME/dev/torquebox/current
 export JBOSS_HOME=$TORQUEBOX_HOME/jboss
-export JRUBY_HOME=$TORQUEBOX_HOME/jruby
+#export JRUBY_HOME=$TORQUEBOX_HOME/jruby
 
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
