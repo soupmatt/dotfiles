@@ -69,7 +69,7 @@ export PATH="/usr/local/mysql/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 
-PATH=".bundle/safe/../bin:$PATH"
+#PATH=".bundle/safe/../bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 keychain -q

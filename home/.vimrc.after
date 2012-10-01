@@ -84,3 +84,6 @@ nmap <leader>S <Plug>SendFocusedTestToTmux
 
 " open a browser window
 :command -bar -nargs=1 OpenURL :!open <args>
+
+" reload files that changed externally
+set autoread

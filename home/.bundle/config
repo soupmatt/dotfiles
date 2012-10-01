@@ -1,5 +1,9 @@
 --- 
+BUNDLE_LOCAL__RUBYCAS-CLIENT: /Users/mcampbell/dev/opensource/rubycas-client
 BUNDLE_WITHOUT: linux
-#BUNDLE_PATH: .bundle/gems
-#BUNDLE_BIN: .bundle/bin
-BUNDLE_CLEAN: true
+BUNDLE_LOCAL__PERSISTENT_HTTPARTY: /Users/mcampbell/dev/vibes/persistent_httparty
+BUNDLE_LOCAL__HTTPARTY: /Users/mcampbell/dev/vibes/httparty
+BUNDLE_LOCAL__SECURITY-SERVICES-CLIENT: /Users/mcampbell/dev/vibes/security-services-client
+BUNDLE_LOCAL__FACTORY_GIRL-PRELOAD: /Users/mcampbell/dev/vibes/factory_girl-preload
+BUNDLE_LOCAL__BUNNY: /Users/mcampbell/dev/vibes/bunny
+BUNDLE_LOCAL__VIBES-RSPEC-RAILS23: /Users/mcampbell/dev/vibes/rspec-rails23
