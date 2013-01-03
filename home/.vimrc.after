@@ -14,8 +14,8 @@ au BufRead,BufNewFile *.infinity_test set filetype=ruby
 :nnoremap <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " switch tabs
-map th :tabnext<CR>
-map tl :tabprev<CR>
+map tl :tabnext<CR>
+map th :tabprev<CR>
 map tn :tabnew<CR>
 map td :tabclose<CR>
 
@@ -27,7 +27,7 @@ noremap <tab> <C-w><C-w>
 "map <C-p> :cp<CR>
 
 " autoclose stuff
-let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|' }
+let g:AutoClosePairs = {'(': ')', '{': '}', '[': ']', '"': '"', "'": "'", '#{': '}', '|':'|', '{{': '}}' }
 let g:AutoCloseProtectedRegions = ["Character"]
 
 " shortcut for powder restart with r
@@ -48,19 +48,6 @@ autocmd vimenter * if !argc() | NERDTree | endif |
 " close the window if the last thing is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif |
 
-"autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-" Close all open buffers on entering a window if the only
-" buffer that's left is the NERDTree buffer
-"function! s:CloseIfOnlyNerdTreeLeft()
-  "if exists("t:NERDTreeBufName")
-    "if bufwinnr(t:NERDTreeBufName) != -1
-      "if winnr("$") == 1
-        "q
-      "endif
-    "endif
-  "endif
-"endfunction
-
 " open ctag in tab - currently doesn't work :(
 "map <C-\> :tab split<CR>:exec('tag '.expand('<cword>'))<CR>
 
@@ -73,8 +60,8 @@ set clipboard=unnamed
 " disable janus <C-T> mapping for CtrlP
 " set the mouse to xterm2
 if !(has("gui_macvim") && has("gui_running"))
-  unmap <C-T>
-  iunmap <C-T>
+  "unmap <C-T>
+  "iunmap <C-T>
   set ttymouse=xterm2
 endif
 

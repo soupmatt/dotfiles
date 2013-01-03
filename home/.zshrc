@@ -34,6 +34,10 @@ alias sl="ls"
 alias sd="say all done"
 alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
 alias tjruby="$JRUBY_HOME/bin/jruby"
+alias knife="nocorrect knife"
+alias guard="nocorrect guard"
+
+fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 
 # Set to this to use case-sensitive completion
@@ -49,12 +53,12 @@ alias tjruby="$JRUBY_HOME/bin/jruby"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew bundler git github heroku knife osx powder rake rbenv soupmatt)
+plugins=(brew git heroku knife osx powder rake soupmatt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -63,6 +67,8 @@ export VISUAL="vim"
 export GIT_EDITOR=$EDITOR
 export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
+alias less=$PAGER
+alias zless=$PAGER
 export LESS="-R"
 
 export PATH="/usr/local/mysql/bin:$PATH"
@@ -73,3 +79,13 @@ export LC_ALL=en_US.UTF-8
 export PATH="$HOME/bin:$PATH"
 
 keychain -q
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source ~/.rvm/scripts/rvm
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Homebrew install npm
+export PATH="/usr/local/share/npm/bin:$PATH"

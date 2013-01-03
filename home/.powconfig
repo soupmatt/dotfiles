@@ -1,9 +1,9 @@
 export POW_DST_PORT=88
-export POW_WORKERS=5
+export POW_WORKERS=2
 export NEWRELIC_DISPATCHER=pow
 
 # we have rvm installed, but we don't want pow to use it
-export POW_RVM_PATH=.dont-use-rvm
+#export POW_RVM_PATH=.dont-use-rvm
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
