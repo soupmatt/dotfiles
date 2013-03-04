@@ -4,3 +4,4 @@
 doc/tags
 .bundle
 .rbenv-gemsets
+vendor/cache
