@@ -4,7 +4,4 @@ if ARGV[0] == '-r'
   system "gem list | cut -d\" \" -f1 | xargs gem uninstall -aIx"
 end
 
-# system "gem install rubygems-bundler"
-# system "gem install gem-ctags"
-system "gem install bundler"
-system "gem install rake gem-browse hookup powder homesick wirble lunchy pry pry-doc"
+system "cat ~/.rbenv/default-gems | xargs gem install"

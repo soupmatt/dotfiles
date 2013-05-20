@@ -36,6 +36,8 @@ alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ru
 alias tjruby="$JRUBY_HOME/bin/jruby"
 alias knife="nocorrect knife"
 alias guard="nocorrect guard"
+alias rbenv="nocorrect rbenv"
+alias relish="nocorrect relish"
 
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
@@ -71,21 +73,25 @@ alias less=$PAGER
 alias zless=$PAGER
 export LESS="-R"
 
-export PATH="/usr/local/mysql/bin:$PATH"
+PATH="/usr/local/mysql/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 
-#PATH=".bundle/safe/../bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-
 keychain -q
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
-source ~/.rvm/scripts/rvm
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+#source ~/.rvm/scripts/rvm
+
+PATH=".bundle/bin:$PATH"
+PATH="$HOME/bin:$PATH"
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+PATH="/usr/local/heroku/bin:$PATH"
 
 # Homebrew install npm
-export PATH="/usr/local/share/npm/bin:$PATH"
+PATH="/usr/local/share/npm/bin:$PATH"
+
+export PATH

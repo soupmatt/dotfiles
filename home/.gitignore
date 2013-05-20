@@ -5,3 +5,5 @@ doc/tags
 .bundle
 .rbenv-gemsets
 vendor/cache
+tags
+gem_graph.png

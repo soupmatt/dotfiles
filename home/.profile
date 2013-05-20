@@ -5,10 +5,6 @@ fi
 PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
 export PS1
 
-if [ -f $HOME/.nvm/nvm.sh ]; then
-  . $HOME/.nvm/nvm.sh
-fi
-
 export EDITOR="vim"
 export VISUAL="vim"
 export GIT_EDITOR=$EDITOR
@@ -56,7 +52,7 @@ export NO_RUBY_PATH
 
 export LC_ALL=en_US.UTF-8
 
-export USE_RVM=true
+export USE_RVM=false
 
 if [ "x$USE_RVM" = "xtrue" ]; then
   export rvm_path="$HOME/.rvm"

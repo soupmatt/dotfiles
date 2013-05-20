@@ -1,2 +1,0 @@
-USE_BUNDLER=try
-BUNDLER_BLACKLIST=heroku hookup github powder homesick travis-lint foreman amqp-deleteq amqp-purge amqp-spy amqp-statq amqp-peek torquebox
