@@ -1,16 +1,20 @@
---- 
-BUNDLE_LOCAL__RUBYCAS-CLIENT: /Users/mcampbell/dev/opensource/rubycas-client
+---
 BUNDLE_LOCAL__CAPISTRANO-CHEF: /Users/mcampbell/dev/vibes/capistrano-chef
+BUNDLE_LOCAL__RUBYCAS-CLIENT: /Users/mcampbell/dev/opensource/rubycas-client
 BUNDLE_BIN: .bundle/bin
-BUNDLE_WITHOUT: linux
 BUNDLE_LOCAL__SEQUEL-RAILS: /Users/mcampbell/dev/opensource/sequel-rails
-BUNDLE_LOCAL__PERSISTENT_HTTPARTY: /Users/mcampbell/dev/vibes/persistent_httparty
+BUNDLE_WITHOUT: linux
 BUNDLE_LOCAL__CAPISTRANO-SCM-JENKINS: /Users/mcampbell/dev/vibes/capistrano-scm-jenkins
-BUNDLE_LOCAL__HTTPARTY: /Users/mcampbell/dev/vibes/httparty
-BUNDLE_LOCAL__SECURITY-SERVICES-CLIENT: /Users/mcampbell/dev/vibes/security-services-client
+BUNDLE_LOCAL__PERSISTENT_HTTPARTY: /Users/mcampbell/dev/vibes/persistent_httparty
+BUNDLE_LOCAL__FACTORY_GIRL-PRELOAD: /Users/mcampbell/dev/vibes/factory_girl-preload
 BUNDLE_LOCAL__ACTIVEMESSAGING: /Users/mcampbell/dev/vibes/activemessaging
+BUNDLE_LOCAL__SECURITY-SERVICES-CLIENT: /Users/mcampbell/dev/vibes/security-services-client
+BUNDLE_LOCAL__HTTPARTY: /Users/mcampbell/dev/vibes/httparty
 BUNDLE_LOCAL__BUNNY: /Users/mcampbell/dev/vibes/bunny
-BUNDLE_LOCAL__VIBES-RSPEC-RAILS23: /Users/mcampbell/dev/vibes/rspec-rails23
 BUNDLE_LOCAL__RABBIT_UTILS: /Users/mcampbell/dev/vibes/rabbit_utils
-BUNDLE_LOCAL__JASMINE-PHANTOM: /Users/mcampbell/dev/vibes/jasmine-phantom
+BUNDLE_LOCAL__VIBES-RSPEC-RAILS23: /Users/mcampbell/dev/vibes/rspec-rails23
 BUNDLE_LOCAL__SPARKLE: /Users/mcampbell/dev/vibes/sparkle
+BUNDLE_LOCAL__JASMINE-PHANTOM: /Users/mcampbell/dev/vibes/jasmine-phantom
+BUNDLE_LOCAL__COMA: /Users/mcampbell/dev/vibes/coma
+BUNDLE_LOCAL__MOBILEDB-CLIENT: /Users/mcampbell/dev/vibes/mobiledb-client
+BUNDLE_LOCAL__URL-SHORTENER-CLIENT: /Users/mcampbell/dev/vibes/url-shortener-client

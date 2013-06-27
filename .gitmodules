@@ -16,9 +16,6 @@
 [submodule "home/.janus/nginx.vim"]
 	path = home/.janus/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
-[submodule "home/.janus/vim-eunuch"]
-	path = home/.janus/vim-eunuch
-	url = git://github.com/tpope/vim-eunuch.git
 [submodule "home/.rbenv"]
 	path = home/.rbenv
 	url = git://github.com/sstephenson/rbenv.git

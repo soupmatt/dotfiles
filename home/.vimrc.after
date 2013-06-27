@@ -4,12 +4,6 @@ colorscheme torte
 " use 2 spaces in .coffee files
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
-" .autotest is a ruby file
-au BufRead,BufNewFile *.autotest set filetype=ruby
-
-" .infinity_test is a ruby file
-au BufRead,BufNewFile *.infinity_test set filetype=ruby
-
 " strip trailing whitespace from current buffer
 :nnoremap <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
