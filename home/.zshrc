@@ -23,22 +23,6 @@ export MAVEN_OPTS
 export CFLAGS="-g -Os"
 export MAKEFLAGS="-j5"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias ls="ls -G"
-alias la="ls -alhG"
-alias ll="ls -lhG"
-alias sl="ls"
-alias sd="say all done"
-alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
-alias tjruby="$JRUBY_HOME/bin/jruby"
-alias knife="nocorrect knife"
-alias guard="nocorrect guard"
-alias rbenv="nocorrect rbenv"
-alias relish="nocorrect relish"
-
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 
@@ -73,6 +57,22 @@ alias less=$PAGER
 alias zless=$PAGER
 export LESS="-R"
 
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias ls="ls -G"
+alias la="ls -alhG"
+alias ll="ls -lhG"
+alias sl="ls"
+alias sd="say all done"
+alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
+alias tjruby="$JRUBY_HOME/bin/jruby"
+alias knife="nocorrect knife"
+alias guard="nocorrect guard"
+alias rbenv="nocorrect rbenv"
+alias relish="nocorrect relish"
+
 PATH="/usr/local/mysql/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
@@ -95,3 +95,6 @@ PATH="/usr/local/heroku/bin:$PATH"
 PATH="/usr/local/share/npm/bin:$PATH"
 
 export PATH
+
+# added by travis gem
+source /Users/mcampbell/.travis/travis.sh
