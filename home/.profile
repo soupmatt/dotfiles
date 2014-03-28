@@ -1,7 +1,3 @@
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
-fi
-
 PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
 export PS1
 
@@ -27,8 +23,8 @@ export MAVEN_OPTS
 export CFLAGS="-g -Os"
 export MAKEFLAGS="-j5"
 
-if [ -f .profile_private ]; then
-  . .profile_private
+if [ -f $HOME/.profile_private ]; then
+  . $HOME/.profile_private
 fi
 
 alias ls="ls -G"
@@ -36,7 +32,6 @@ alias la="ls -alhG"
 alias ll="ls -lhG"
 alias sl="ls"
 alias sd="say all done"
-eval $(hub alias -s bash)
 alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
 alias tjruby="$JRUBY_HOME/bin/jruby"
 
@@ -45,6 +40,8 @@ export COMMAND_MODE=unix2003
 export GRAILS_OPTS="-server -Xmx512M -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
 
 export PATH="/usr/local/mysql/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 
 #make it so we have either rbenv or rvm loaded, but not both
 NO_RUBY_PATH=${NO_RUBY_PATH:=$PATH}
@@ -74,3 +71,6 @@ if [ -f $HOME/.ps1_functions ]; then
 fi
 
 keychain -q
+
+# added by travis gem
+source /Users/mcampbell/.travis/travis.sh

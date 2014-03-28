@@ -48,13 +48,15 @@ plugins=(brew git heroku knife osx powder rake soupmatt)
 
 source $ZSH/oh-my-zsh.sh
 
+add-zsh-hook -d preexec omz_termsupport_preexec
+
 export EDITOR="vim"
 export VISUAL="vim"
 export GIT_EDITOR=$EDITOR
 export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
-alias less=$PAGER
-alias zless=$PAGER
+#alias less=$PAGER
+#alias zless=$PAGER
 export LESS="-R"
 
 # Example aliases
@@ -74,6 +76,8 @@ alias rbenv="nocorrect rbenv"
 alias relish="nocorrect relish"
 
 PATH="/usr/local/mysql/bin:$PATH"
+PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/bin:$PATH"
 
 export LC_ALL=en_US.UTF-8
 
