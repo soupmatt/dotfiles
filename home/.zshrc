@@ -102,3 +102,7 @@ export PATH
 
 # added by travis gem
 source /Users/mcampbell/.travis/travis.sh
+
+if [ -f $HOME/.profile_private ]; then
+  . $HOME/.profile_private
+fi
