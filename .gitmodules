@@ -16,42 +16,15 @@
 [submodule "home/.janus/nginx.vim"]
 	path = home/.janus/nginx.vim
 	url = git://github.com/vim-scripts/nginx.vim.git
-[submodule "home/.rbenv"]
-	path = home/.rbenv
-	url = git://github.com/sstephenson/rbenv.git
-[submodule "home/.rbenv-plugins/rbenv-vars"]
-	path = home/.rbenv-plugins/rbenv-vars
-	url = git://github.com/sstephenson/rbenv-vars.git
-[submodule "home/.rbenv-plugins/rbenv-each"]
-	path = home/.rbenv-plugins/rbenv-each
-	url = git://github.com/chriseppstein/rbenv-each.git
 [submodule "home/.janus/vim-turbux"]
 	path = home/.janus/vim-turbux
 	url = git://github.com/jgdavey/vim-turbux.git
 [submodule "home/.janus/jgdavey-tslime"]
 	path = home/.janus/jgdavey-tslime
 	url = https://github.com/jgdavey/tslime.vim.git
-[submodule "home/.rbenv-plugins/ruby-build"]
-	path = home/.rbenv-plugins/ruby-build
-	url = git://github.com/sstephenson/ruby-build.git
 [submodule "home/.janus/vim-nerdtree-tabs"]
 	path = home/.janus/vim-nerdtree-tabs
 	url = git://github.com/jistr/vim-nerdtree-tabs.git
-[submodule "home/.rbenv-plugins/rbenv-gemset"]
-	path = home/.rbenv-plugins/rbenv-gemset
-	url = git://github.com/jamis/rbenv-gemset.git
 [submodule "home/.oh-my-zsh"]
 	path = home/.oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
-[submodule "home/.rbenv-plugins/rbenv-default-gems"]
-	path = home/.rbenv-plugins/rbenv-default-gems
-	url = git://github.com/sstephenson/rbenv-default-gems.git
-[submodule "home/.rbenv-plugins/rbenv-only"]
-	path = home/.rbenv-plugins/rbenv-only
-	url = git://github.com/rodreegez/rbenv-only.git
-[submodule "home/.rbenv-plugins/rbenv-readline"]
-	path = home/.rbenv-plugins/rbenv-readline
-	url = git://github.com/tpope/rbenv-readline.git
-[submodule "home/.rbenv-plugins/rbenv-ctags"]
-	path = home/.rbenv-plugins/rbenv-ctags
-	url = git://github.com/tpope/rbenv-ctags.git
