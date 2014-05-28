@@ -2,10 +2,5 @@
 BUNDLE_BIN: .bundle/bin
 BUNDLE_LOCAL__SEQUEL-RAILS: /Users/mcampbell/dev/opensource/sequel-rails
 BUNDLE_WITHOUT: linux:sqlserver
-BUNDLE_LOCAL__FACTORY_GIRL-PRELOAD: /Users/mcampbell/dev/vibes-other/factory_girl-preload
-BUNDLE_LOCAL__ACTIVEMESSAGING: /Users/mcampbell/dev/vibes-other/activemessaging
-BUNDLE_LOCAL__VIBES-RSPEC-RAILS23: /Users/mcampbell/dev/vibes/rspec-rails23
-BUNDLE_LOCAL__JASMINE-PHANTOM: /Users/mcampbell/dev/vibes-other/jasmine-phantom
-BUNDLE_LOCAL__COMA: /Users/mcampbell/dev/vibes/coma
 BUNDLE_LOCAL__MESSAGE-DRIVER: /Users/mcampbell/dev/opensource/message-driver
 BUNDLE_MIRROR__HTTPS://RUBYGEMS.ORG: http://rubygems.dev

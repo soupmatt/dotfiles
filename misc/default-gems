@@ -1,6 +1,5 @@
 gem-ctags
 bundler
-rake
 gem-browse
 hookup
 powder

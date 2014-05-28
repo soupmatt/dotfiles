@@ -4,4 +4,4 @@ if ARGV[0] == '-r'
   system "gem list | cut -d\" \" -f1 | xargs gem uninstall -aIx"
 end
 
-system "cat ~/.rbenv/default-gems | xargs gem install"
+system "cat $RBENV_ROOT/default-gems | xargs gem install"

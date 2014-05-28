@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+#link rbenv default-gems file
+if rbenv_root = ENV['RBENV_ROOT']
+  ln_s File.join(Dir.pwd, "misc/default-gems"), File.join(rbenv_root, "default-gems")
+else
+  say_status :rbenv_missing, "RBENV_ROOT isn't set, so we can't symlink default gems", :yellow
+end

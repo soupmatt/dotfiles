@@ -5,7 +5,7 @@ export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
 export LESS="-R"
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
@@ -42,15 +42,15 @@ PATH="/usr/local/heroku/bin:$PATH"
 # Homebrew install npm
 PATH="/usr/local/share/npm/bin:$PATH"
 
-PATH=".bundle/safe/../bin:$PATH"
-PATH="$HOME/bin:$PATH"
-export PATH
-
 # added by travis gem
 source /Users/mcampbell/.travis/travis.sh
 
 export RBENV_ROOT=/usr/local/var/rbenv
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+PATH=".bundle/bin:$PATH"
+PATH="$HOME/bin:$PATH"
+export PATH
 
 keychain -q
