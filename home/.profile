@@ -1,6 +1,3 @@
-PS1="\[\033[01;32m\]\u@\h\[\033[01;34m\] \w \$\[\033[00m\] "
-export PS1
-
 export EDITOR="vim"
 export VISUAL="vim"
 export GIT_EDITOR=$EDITOR
@@ -9,10 +6,6 @@ export PAGER="vimpager"
 export LESS="-R"
 
 export JAVA_HOME=$(/usr/libexec/java_home)
-
-export TORQUEBOX_HOME=$HOME/dev/torquebox/current
-export JBOSS_HOME=$TORQUEBOX_HOME/jboss
-#export JRUBY_HOME=$TORQUEBOX_HOME/jruby
 
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
@@ -33,44 +26,31 @@ alias ll="ls -lhG"
 alias sl="ls"
 alias sd="say all done"
 alias heroku-supported-rubies="curl https://s3.amazonaws.com/heroku-buildpack-ruby/ruby_versions.yml"
-alias tjruby="$JRUBY_HOME/bin/jruby"
 
 export COMMAND_MODE=unix2003
 
 export GRAILS_OPTS="-server -Xmx512M -XX:MaxPermSize=256m -Dfile.encoding=UTF-8 -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
 
-export PATH="/usr/local/mysql/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/bin:$PATH"
-
-#make it so we have either rbenv or rvm loaded, but not both
-NO_RUBY_PATH=${NO_RUBY_PATH:=$PATH}
-export NO_RUBY_PATH
-
 export LC_ALL=en_US.UTF-8
 
-export USE_RVM=false
+PATH="/usr/local/sbin:$PATH"
+PATH="/usr/local/bin:$PATH"
 
-if [ "x$USE_RVM" = "xtrue" ]; then
-  export rvm_path="$HOME/.rvm"
-  export PATH=$NO_RUBY_PATH
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
-  [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
-else
-  if [ -x $HOME/.rbenv/bin/rbenv ]; then
-    export PATH="$HOME/.rbenv/bin:$NO_RUBY_PATH"
-    eval "$(rbenv init -)"
-  fi
-fi
+### Added by the Heroku Toolbelt
+PATH="/usr/local/heroku/bin:$PATH"
+
+# Homebrew install npm
+PATH="/usr/local/share/npm/bin:$PATH"
+
 PATH=".bundle/safe/../bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-
-if [ -f $HOME/.ps1_functions ]; then
-  . $HOME/.ps1_functions
-  ps1_set
-fi
-
-keychain -q
+PATH="$HOME/bin:$PATH"
+export PATH
 
 # added by travis gem
 source /Users/mcampbell/.travis/travis.sh
+
+export RBENV_ROOT=/usr/local/var/rbenv
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+keychain -q
