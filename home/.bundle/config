@@ -1,6 +1,4 @@
 ---
-BUNDLE_BIN: .bundle/bin
-BUNDLE_LOCAL__SEQUEL-RAILS: /Users/mcampbell/dev/opensource/sequel-rails
 BUNDLE_WITHOUT: linux:sqlserver
-BUNDLE_LOCAL__MESSAGE-DRIVER: /Users/mcampbell/dev/opensource/message-driver
 BUNDLE_MIRROR__HTTPS://RUBYGEMS.ORG: http://rubygems.dev
+BUNDLE_LOCAL__RAILS_ADMIN-PUNDIT: "/Users/mcampbell/dev/opensource/rails_admin-pundit"

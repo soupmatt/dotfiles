@@ -5,7 +5,7 @@ colorscheme torte
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " strip trailing whitespace from current buffer
-:nnoremap <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+map <leader>ws :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " switch tabs
 map tl :tabnext<CR>

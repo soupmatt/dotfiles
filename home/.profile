@@ -5,7 +5,7 @@ export HOMEBREW_EDITOR=$VISUAL
 export PAGER="vimpager"
 export LESS="-R"
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
 USER_MEM_ARGS="-Xms256m -Xmx512m -XX:MaxPermSize=128m -Dcom.sun.management.jmxremote=true"
 export USER_MEM_ARGS
@@ -15,6 +15,9 @@ export MAVEN_OPTS
 
 export CFLAGS="-g -Os"
 export MAKEFLAGS="-j5"
+
+export PARALLEL_TEST_PROCESSORS=6
+export CC="/usr/bin/gcc" # default to using clang to compile stuff
 
 if [ -f $HOME/.profile_private ]; then
   . $HOME/.profile_private
@@ -46,10 +49,17 @@ PATH="/usr/local/share/npm/bin:$PATH"
 source /Users/mcampbell/.travis/travis.sh
 
 export RBENV_ROOT=/usr/local/var/rbenv
+#export RUBY_BUILD_CACHE_PATH="$(rbenv root)/cache"
 
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#source /usr/local/share/chruby/chruby.sh
+#source /usr/local/share/chruby/auto.sh
 
-PATH=".bundle/bin:$PATH"
+#RUBIES=(
+  #/usr/local/var/rbenv/versions/*
+#)
+
+#PATH=".bundle/bin:$PATH"
 PATH="$HOME/bin:$PATH"
 export PATH
 

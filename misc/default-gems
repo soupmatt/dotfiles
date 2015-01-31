@@ -1,4 +1,5 @@
 gem-ctags
+rubygems-bundler
 bundler
 gem-browse
 hookup

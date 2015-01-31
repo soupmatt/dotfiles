@@ -7,3 +7,5 @@ doc/tags
 vendor/cache
 tags
 gem_graph.png
+.rake_tasks
+.envrc

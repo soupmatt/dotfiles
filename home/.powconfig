@@ -1,5 +1,8 @@
-#export POW_DST_PORT=88
+export POW_DOMAINS=dev,vibescm.dev
 export POW_WORKERS=2
 export NEWRELIC_DISPATCHER=pow
+export DISABLE_SPRING=true
 
-eval "$(rbenv init -)"
+export PATH=$HOME/pow_bin:$PATH
+
+#eval "$(rbenv init -)"
