@@ -63,4 +63,4 @@ export RBENV_ROOT=/usr/local/var/rbenv
 PATH="$HOME/bin:$PATH"
 export PATH
 
-keychain -q
+eval `keychain -q --eval --inherit any id_rsa`

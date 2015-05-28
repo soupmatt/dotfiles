@@ -5,9 +5,11 @@ def copy(*args)
 end
 
 begin
-  require "pry"
-  Pry.start
-  exit
+  if RUBY_VERSION >= "1.9"
+    require "pry"
+    Pry.start
+    exit
+  end
 rescue LoadError
   warn "=> Unable to load pry"
 end

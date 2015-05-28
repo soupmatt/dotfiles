@@ -38,6 +38,7 @@ alias knife="nocorrect knife"
 alias guard="nocorrect guard"
 #alias rbenv="nocorrect rbenv"
 alias relish="nocorrect relish"
+alias prune="git branch -l --merged | grep -v master | xargs -n 1 git branch -d"
 
 eval "$(direnv hook zsh)"
 
