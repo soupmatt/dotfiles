@@ -1,0 +1,108 @@
+#!/bin/bash
+
+NGINX_SSL_DIR="$(brew --prefix)/etc/nginx/ssl"
+CA_DIR="$NGINX_SSL_DIR/ca"
+
+if [ ! -d "$NGINX_SSL_DIR" ]; then
+  # Make folder for stud config and keys
+  mkdir -p $CA_DIR/newcerts
+
+  echo "Setup openssl config"
+  config_start=$(grep --text --line-number '^OPENSSL_CONFIG:$' $0 | cut -d ':' -f 1)
+  tail -n +$((config_start + 1)) $0 | sed "s%\$CA_DIR%$CA_DIR%" > $CA_DIR/openssl.cnf
+  touch $CA_DIR/index.txt
+  echo "01" > $CA_DIR/serial
+
+  echo "Creating ssl keypair for signing *.dev certificate."
+  openssl req -newkey rsa:2048 -batch -x509 -nodes -subj "/C=US/O=Developer Certificate/CN=*.dev Domain CA" -keyout $CA_DIR/key.pem -out $CA_DIR/cert.pem -days 9999 &> /dev/null
+  echo "Adding certificate to login keychain as trusted."
+  security add-trusted-cert -d -r trustRoot -k $HOME/Library/Keychains/login.keychain $CA_DIR/cert.pem
+  echo "================================================================================"
+  echo -e "To use the certificate without a warning in Firefox you must add the\n\"$CA_DIR/cert.pem\" certificate to your Firefox root certificates."
+  echo "================================================================================"
+fi
+
+if [ -e "$HOME/.powconfig" ]; then
+  source "$HOME/.powconfig"
+fi
+
+IFS=","
+
+for ext_domain in $POW_EXT_DOMAINS; do
+  if [[ $ext_domain == *.* ]]; then
+    domains=("${domains[@]}""DNS:$ext_domain,")
+    domains=("${domains[@]}""DNS:*.$ext_domain,")
+  else
+    echo "Not using POW_EXT_DOMAIN value '$ext_domain' because it appears to be a TLD."
+  fi
+done
+
+for domain in $HOME/.pow/*; do
+  domain="${domain##*/}"
+  for ext in ${POW_DOMAINS:-"dev"}; do
+    domains=("${domains[@]}""DNS:$domain.$ext,")
+    domains=("${domains[@]}""DNS:*.$domain.$ext,")
+  done
+
+  for ext_domain in $POW_EXT_DOMAINS; do
+    if [[ $ext_domain == *.* ]]; then
+      domains=("${domains[@]}""DNS:*.$domain.$ext_domain,")
+    fi
+  done
+done
+
+export SAN="${domains[@]%,}"
+unset IFS
+
+if [ "$(cat $NGINX_SSL_DIR/domains)" != "$SAN" ]; then
+  config_start=$(grep --text --line-number '^OPENSSL_CONFIG:$' $0 | cut -d ':' -f 1)
+  tail -n +$((config_start + 1)) $0 | sed "s%\$CA_DIR%$CA_DIR%" > $CA_DIR/openssl.cnf
+
+  echo "Generating new dev certificate"
+  openssl req -newkey rsa:2048 -batch -nodes -subj "/C=US/O=Developer Certificate/CN=*.dev" -keyout $NGINX_SSL_DIR/key.pem -out $NGINX_SSL_DIR/csr.pem -days 9999 &> /dev/null
+  echo "Signing dev certificate"
+  openssl ca -config $CA_DIR/openssl.cnf -policy policy_anything -batch -days 9999 -out $NGINX_SSL_DIR/cert.pem -infiles $NGINX_SSL_DIR/csr.pem &> /dev/null
+  cat $NGINX_SSL_DIR/key.pem $NGINX_SSL_DIR/cert.pem > $NGINX_SSL_DIR/keypair.pem
+  echo $SAN > $NGINX_SSL_DIR/domains
+fi
+
+exit 0
+
+OPENSSL_CONFIG:
+[ ca ]
+default_ca      = CA_default
+
+[ CA_default ]
+dir              = $CA_DIR
+certs            = $dir/certs
+crl_dir          = $dir/crl
+database         = $dir/index.txt
+unique_subject  = no
+new_certs_dir    = $dir/newcerts
+certificate      = $dir/cert.pem
+serial           = $dir/serial
+crlnumber        = $dir/crlnumber
+crl              = $dir/crl.pem
+private_key      = $dir/key.pem
+RANDFILE         = $dir/.rand
+default_days     = 365     # how long to certify for
+default_crl_days = 30      # how long before next CRL
+default_md       = sha256      # which md to use.
+x509_extensions  = usr_cert
+
+[ policy_anything ]
+countryName            = optional
+stateOrProvinceName    = optional
+localityName           = optional
+organizationName       = optional
+organizationalUnitName = optional
+commonName             = supplied
+emailAddress           = optional
+
+[ usr_cert ]
+basicConstraints       = CA:FALSE
+nsCertType             = server
+nsComment              = "OpenSSL Generated Certificate"
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid,issuer
+subjectAltName         = ${ENV::SAN}
