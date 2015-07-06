@@ -46,7 +46,7 @@ PATH="/usr/local/heroku/bin:$PATH"
 PATH="/usr/local/share/npm/bin:$PATH"
 
 # added by travis gem
-source /Users/mcampbell/.travis/travis.sh
+# source /Users/mcampbell/.travis/travis.sh
 
 export RBENV_ROOT=/usr/local/var/rbenv
 #export RUBY_BUILD_CACHE_PATH="$(rbenv root)/cache"
