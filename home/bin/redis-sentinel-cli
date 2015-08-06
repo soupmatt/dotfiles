@@ -1,0 +1,77 @@
+#! /usr/bin/env ruby
+
+require 'rubygems'
+require 'redis'
+require 'getoptlong'
+require 'pry'
+
+opts = GetoptLong.new(
+  [ '--help', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--host', '-h', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--master', '-m', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--db', '-n', GetoptLong::REQUIRED_ARGUMENT ],
+)
+
+@sentinel_host = 'localhost'
+@sentinel_port = 26379
+@sentinel_master = nil
+@password = nil
+@db = 0
+@redis_bin = `which redis-cli`.chomp
+
+opts.each do |opt, arg|
+  case opt
+  when '--help'
+    puts <<-HELP
+Usage: redis-sentinel-cli -m <master name> [OPTIONS] [-- [additional redis-cli args]]
+
+  -m, --master  the name of the master you want to connect to
+  -h, --host    the hostname or IP address of the sentinel you want to use (defaults to #{@sentinel_host})
+  -p, --port    the port the sentinel is listening on (defaults to #{@sentinel_port})
+  -n, --db      the redis database number you want to connect to
+  --help        print this help message and exit
+    HELP
+    exit 0
+  when '--host'
+    @sentinel_host = arg
+  when '--port'
+    @sentinel_port = Integer(arg)
+  when '--master'
+    @sentinel_master = arg
+  when '--db'
+    @db = Integer(arg)
+  end
+end
+
+binding.pry
+
+if @redis_bin == ''
+  puts "couldn't find redis-cli on the path!"
+  exit 1
+end
+
+unless File.executable?(@redis_bin)
+  puts "#{@redis_bin} is not executable!"
+  exit 1
+end
+
+sentinel = Redis.new({
+  host: @sentinel_host,
+  port: @sentinel_port
+})
+
+reply = sentinel.sentinel("get-master-addr-by-name", @sentinel_master)
+config = { host: reply[0], port: reply[1] }
+
+cli_args = []
+cli_args << '-h'
+cli_args << config[:host]
+cli_args << '-p'
+cli_args << config[:port]
+cli_args << '-n'
+cli_args << @db
+cli_args += ARGV.dup
+
+puts "#{@redis_bin} #{cli_args.shelljoin}"
+
