@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'redis'
 require 'getoptlong'
-require 'pry'
+require 'shellwords'
 
 opts = GetoptLong.new(
   [ '--help', GetoptLong::REQUIRED_ARGUMENT ],
@@ -44,8 +44,6 @@ Usage: redis-sentinel-cli -m <master name> [OPTIONS] [-- [additional redis-cli a
   end
 end
 
-binding.pry
-
 if @redis_bin == ''
   puts "couldn't find redis-cli on the path!"
   exit 1
@@ -73,5 +71,5 @@ cli_args << '-n'
 cli_args << @db
 cli_args += ARGV.dup
 
-puts "#{@redis_bin} #{cli_args.shelljoin}"
+exec "#{@redis_bin} #{cli_args.shelljoin}"
 
