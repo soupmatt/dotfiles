@@ -3,13 +3,11 @@ BUNDLE_LOCAL__SAML_SP_ENGINE: "/Users/matt.campbell/dev/vibes/saml_sp_engine"
 BUNDLE_BUILD__LIBV8: "--with-system-v8"
 BUNDLE_MIRROR__HTTPS://RUBYGEMS__ORG/: http://rubygems.dev/
 BUNDLE_WITHOUT: linux:sqlserver
-BUNDLE_LOCAL__ACTIVEMESSAGING: "/Users/matt.campbell/dev/vibes/activemessaging"
 BUNDLE_LOCAL__RAILS_ADMIN: "/Users/matt.campbell/dev/opensource/rails_admin"
 BUNDLE_GEM__TEST: rspec
 BUNDLE_BUILD__THERUBYRACER: "--with-system-v8"
 BUNDLE_GEM__COC: 'false'
 BUNDLE_LOCAL__RAILS_ADMIN-PUNDIT: "/Users/matt.campbell/dev/opensource/rails_admin-pundit"
-BUNDLE_LOCAL__VIBES-RSPEC-RAILS23: "/Users/matt.campbell/dev/vibes/vibes-rspec-rails23"
 BUNDLE_GEM__MIT: 'false'
 BUNDLE_LOCAL__SAML_IDP: "/Users/matt.campbell/dev/vibes/saml_idp"
-BUNDLE_LOCAL__RUBY-SAML: "/Users/matt.campbell/dev/opensource/ruby-saml"
+#BUNDLE_LOCAL__RUBY-SAML: "/Users/matt.campbell/dev/opensource/ruby-saml"
