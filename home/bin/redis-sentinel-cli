@@ -6,7 +6,7 @@ require 'getoptlong'
 require 'shellwords'
 
 opts = GetoptLong.new(
-  [ '--help', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--help', GetoptLong::NO_ARGUMENT ],
   [ '--host', '-h', GetoptLong::REQUIRED_ARGUMENT ],
   [ '--master', '-m', GetoptLong::REQUIRED_ARGUMENT ],
   [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
