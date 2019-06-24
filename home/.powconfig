@@ -1,8 +1,8 @@
-export POW_DOMAINS=dev,vibescm.dev
+export POW_DOMAINS=dev,vibescm.dev,test-shib.dev
 export POW_WORKERS=2
 export NEWRELIC_DISPATCHER=pow
 export DISABLE_SPRING=true
 
-export PATH=$HOME/pow_bin:$PATH
-
-#eval "$(rbenv init -)"
+# export PATH=$HOME/pow_bin:$PATH
+export PATH="/usr/local/var/rbenv/shims:$PATH"
+eval "$(rbenv init -)"

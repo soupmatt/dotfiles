@@ -28,7 +28,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew brew-cask chruby gem git heroku knife osx powder redis-cli rails rake rake-fast powder postgres soupmatt)
+plugins=(brew brew-cask gem git heroku knife osx powder redis-cli rails rake rake-fast powder postgres soupmatt)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -36,10 +36,21 @@ add-zsh-hook -d preexec omz_termsupport_preexec
 
 alias knife="nocorrect knife"
 alias guard="nocorrect guard"
-#alias rbenv="nocorrect rbenv"
+alias rbenv="nocorrect rbenv"
 alias relish="nocorrect relish"
 alias prune="git branch -l --merged | grep -v master | xargs -n 1 git branch -d"
 
 eval "$(direnv hook zsh)"
 
-chruby $(cat $HOME/.ruby-version)
+# chruby $(cat $HOME/.ruby-version)
+
+export RAMDISK=$HOME/ramdisk
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# added by travis gem
+[ -f /Users/matt.campbell/.travis/travis.sh ] && source /Users/matt.campbell/.travis/travis.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/matt.campbell/.sdkman"
+[[ -s "/Users/matt.campbell/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/matt.campbell/.sdkman/bin/sdkman-init.sh"

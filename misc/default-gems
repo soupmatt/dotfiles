@@ -1,11 +1,6 @@
-gem-ctags
-rubygems-bundler
 bundler
-gem-browse
-hookup
 powder
 homesick
 lunchy
 pry
 pry-doc
-yard

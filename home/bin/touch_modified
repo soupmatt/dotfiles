@@ -1,0 +1,17 @@
+#! /usr/bin/env ruby
+
+require 'fileutils'
+
+output = `git status --porcelain=v2`
+files = output.split("\n").map do |line|
+  file = line.split(' ').last
+  if Dir.exist?(file)
+    Dir["#{file}**/*"].select { |f| File.file?(f) }
+  else
+    file
+  end
+end.flatten
+
+puts files
+
+FileUtils.touch(files)

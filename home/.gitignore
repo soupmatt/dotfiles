@@ -9,3 +9,6 @@ tags
 gem_graph.png
 .rake_tasks
 .envrc
+.tags
+.tags1
+examples.txt
