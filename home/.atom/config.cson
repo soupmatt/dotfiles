@@ -1,0 +1,158 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "f1a14e85-8603-40e6-879a-e5ba084a5659"
+    ruby:
+      default_beautifier: "Ruby Beautify"
+      indent_size: 2
+  "atom-ctags":
+    GotoSymbolClick: "right click"
+    autoBuildTagsWhenActive: true
+    cmdArgs: "--exclude=node_modules"
+    extraTagFiles: ".git/tags"
+  "atom-material-ui":
+    colors:
+      abaseColor: "#607d8b"
+      predefinedColor: "Blue Grey"
+    tabs:
+      compactTabs: true
+      noTabMinWidth: true
+      tintedTabBar: true
+    treeView:
+      blendTabs: true
+      compactList: true
+    ui:
+      panelContrast: true
+      panelShadows: true
+  "atom-package-deps":
+    ignored: []
+  autocomplete:
+    includeCompletionsFromAllBuffers: true
+  "autocomplete-elixir":
+    elixirPath: "/usr/local/opt/elixir/bin"
+    erlangHome: "/usr/local/opt/erlang/bin"
+  "autocomplete-paths":
+    maxFileCount: 5000
+    suggestionPriority: 1
+  "autocomplete-plus":
+    confirmCompletion: "tab"
+    includeCompletionsFromAllBuffers: true
+    minimumWordLength: 4
+  "bracket-matcher":
+    autocompleteBrackets: false
+  "chrome-color-picker":
+    General:
+      autoColorNames: true
+      autoSetColor: true
+  "command-palette":
+    preserveLastSearch: true
+  core:
+    customFileTypes:
+      "source.ruby": [
+        "rb.example"
+      ]
+      "source.yaml": [
+        "yml.example"
+        "yml.gitlab-ci"
+        "yml.erb"
+      ]
+    disabledPackages: [
+      "term2"
+      "atom-color-highlight"
+      "pain-split"
+      "todo-show"
+      "ask-stack"
+      "autocomplete-snippets"
+      "symbols-view"
+      "sort-lines"
+      "linter-javac"
+      "linter-haml"
+      "git-plus"
+      "git-log"
+      "git-history"
+      "git-blame"
+      "autocomplete-elixir"
+    ]
+    projectHome: "/Users/matt.campbell/dev"
+    telemetryConsent: "limited"
+    themes: [
+      "atom-light-ui"
+      "solarized-light-syntax"
+    ]
+  editor:
+    fontSize: 16
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+  "exception-reporting":
+    userId: "467ee4a2-e30a-cfa0-438f-541a343ebbb9"
+  "file-icons":
+    colourChangedOnly: false
+  "find-and-replace": {}
+  "fuzzy-finder":
+    scoringSystem: "fast"
+    useRipGrep: true
+  "git-blame":
+    columnWidth: 301
+    customCommitUrlTemplateString: "http://git.vibes.com/<%- project %>/<%- repo %>/commit/<%- revision %>"
+    useCustomUrlTemplateIfStandardRemotesFail: true
+  "git-diff": {}
+  "git-plus":
+    general:
+      _analyticsUserId: "7f79d4fb-2acb-4a76-86ee-551750dd76f0"
+  github:
+    viewChangesForCurrentFileDiffPaneSplitDirection: "right"
+  "ide-java":
+    errors:
+      incompleteClasspathSeverity: "error"
+  linter:
+    lintOnChange: false
+    lintOnEditorFocus: false
+    showHighlighting: true
+    statusBar: "Show all errors"
+  "linter-haml":
+    executablePath: "/usr/local/var/rbenv/shims/haml-lint"
+  "linter-rubocop":
+    command: "/usr/local/var/rbenv/shims/rubocop"
+    disableWhenNoConfigFile: true
+  "linter-ruby":
+    rubyExecutablePath: "/usr/local/var/rbenv/shims/ruby"
+  "linter-ui-default":
+    panelHeight: 300
+    showPanel: true
+    statusBarRepresents: "Current File"
+  metrics:
+    userId: "c91b74cf79c59b8f56cfb5b5f24f6e171fd8e1d8"
+  "one-dark-ui": {}
+  "one-light-ui":
+    layoutMode: "Compact"
+  "platformio-ide-terminal":
+    core:
+      scrollback: 100000
+    style:
+      theme: "homebrew"
+    toggles:
+      autoClose: true
+  "release-notes":
+    viewedVersion: "0.95.0"
+  term2:
+    shellArguments: " "
+  term3:
+    colors:
+      background: "#282828"
+    fontSize: "16"
+    scrollback: 10000
+  "tree-view":
+    autoReveal: true
+    squashDirectoryNames: true
+  "vim-mode-plus":
+    highlightSearch: true
+    useClipboardAsDefaultRegister: true
+    useSmartcaseForSearch: true
+  "vim-mode-plus-ex-mode":
+    notifiedUseExMode: true
+  welcome:
+    showOnStartup: false
+".nginx.source":
+  editor:
+    tabLength: 4
