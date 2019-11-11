@@ -8,3 +8,4 @@ BUNDLE_LOCAL__MESSAGE-DRIVER-RAILS: "/Users/matt.campbell/dev/opensource/message
 BUNDLE_GEM__COC: "false"
 BUNDLE_GEM__MIT: "false"
 BUNDLE_LOCAL__MESSAGE-DRIVER-NEWRELIC: "/Users/matt.campbell/dev/opensource/message-driver-newrelic"
+BUNDLE_BUILD__MYSQL: "--with-mysql-config=/usr/local/bin/mysql_config"

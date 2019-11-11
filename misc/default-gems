@@ -1,6 +1,5 @@
-bundler
+bundler <2
 powder
 homesick
-lunchy
 pry
 pry-doc

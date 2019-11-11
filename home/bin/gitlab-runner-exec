@@ -7,4 +7,4 @@ export DOCKER_VOLUMES=($HOME/.docker:.docker /var/run/docker.sock:/var/run/docke
 # this command tells gitlab runner to execute the job specified using docker
 # the --docker-pull-policy value of if-not-present is there because otherwise your builds will all choke trying to check if the docker images are up to date
 # unfortunately, this means that you will need to manually pull the needed images before you can run your build
-exec gitlab-runner exec docker --docker-pull-policy if-not-present $@
+exec gitlab-runner exec docker --docker-volumes $HOME/.docker:/root/.docker --docker-volumes /var/run/docker.sock:/var/run/docker.sock --docker-pull-policy if-not-present $@
