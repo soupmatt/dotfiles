@@ -42,16 +42,8 @@ alias rbenv="nocorrect rbenv"
 alias relish="nocorrect relish"
 alias prune="git branch -l --merged | grep -v master | xargs -n 1 git branch -d"
 
-# chruby $(cat $HOME/.ruby-version)
-
 export RAMDISK=$HOME/ramdisk
 export KNIFE_RELATIVE_PATH=cookbooks
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# added by travis gem
-[ -f /Users/matt.campbell/.travis/travis.sh ] && source /Users/matt.campbell/.travis/travis.sh
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/matt.campbell/.sdkman"
-[[ -s "/Users/matt.campbell/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/matt.campbell/.sdkman/bin/sdkman-init.sh"
