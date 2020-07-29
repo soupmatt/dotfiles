@@ -1,0 +1,21 @@
+#! /usr/bin/env ruby
+
+require "shellwords"
+
+cmd = if File.exist?(".rubocop.yml")
+  "rubocop"
+else
+  "standardrb"
+end
+
+cmd = if File.exist?("Gemfile")
+  %w[bundle exec] << cmd
+else
+  Array(cmd)
+end
+
+cmd_args = cmd + ARGV
+
+command_line = Shellwords.shelljoin(cmd_args)
+
+exec(command_line)

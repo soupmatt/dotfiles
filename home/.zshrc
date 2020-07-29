@@ -1,3 +1,7 @@
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -7,8 +11,6 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="soupmatt"
-
-fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -28,7 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew gem git heroku knife osx powder redis-cli rails rake rake-fast powder postgres soupmatt)
+plugins=(alias-finder aws brew direnv docker docker-compose gem git-escape-magic knife osx powder redis-cli rake rake-fast soupmatt terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,11 +42,10 @@ alias rbenv="nocorrect rbenv"
 alias relish="nocorrect relish"
 alias prune="git branch -l --merged | grep -v master | xargs -n 1 git branch -d"
 
-eval "$(direnv hook zsh)"
-
 # chruby $(cat $HOME/.ruby-version)
 
 export RAMDISK=$HOME/ramdisk
+export KNIFE_RELATIVE_PATH=cookbooks
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
