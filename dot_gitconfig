@@ -1,0 +1,49 @@
+[user]
+	name = Matt Campbell
+	email = {{ .email }}
+	signingkey = matt@soupmatt.com
+[core]
+	excludesfile = ~/.gitignore
+  editor = /usr/local/bin/vim
+[init]
+  templatedir = ~/.git_template
+	defaultBranch = main
+[remote "origin"]
+  push = HEAD
+[mergetool "mvimdiff"]
+	cmd = /usr/local/bin/mvimdiff -f $LOCAL $MERGED $REMOTE
+[merge]
+	tool = mvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[difftool "gvimdiff"]
+  path = /usr/local/bin/mvimdiff
+[diff]
+  tool = vimdiff
+  guitool = gvimdiff
+	algorithm = minimal
+	compactionHeuristic = true
+[difftool]
+  prompt = false
+[branch]
+	autosetuprebase = always
+[push]
+	default = current
+[credential]
+	helper = osxkeychain
+[fetch]
+  prune = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = ~/.git_commit_message_template
+[github]
+	user = soupmatt
+[rebase]
+	autosquash = true
+	autoStash = true

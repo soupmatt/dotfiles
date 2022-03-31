@@ -1,0 +1,16 @@
+.DS\_Store
+*.swp
+.idea
+doc/tags
+.bundle
+.rbenv-gemsets
+vendor/cache
+tags
+gem_graph.png
+.rake_tasks
+.envrc
+.tags
+.tags1
+examples.txt
+.vscode
+.eslintcache
