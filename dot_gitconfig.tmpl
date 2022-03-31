@@ -4,21 +4,21 @@
 	signingkey = matt@soupmatt.com
 [core]
 	excludesfile = ~/.gitignore
-  editor = /usr/local/bin/vim
+  editor = vim
 [init]
   templatedir = ~/.git_template
 	defaultBranch = main
 [remote "origin"]
   push = HEAD
 [mergetool "mvimdiff"]
-	cmd = /usr/local/bin/mvimdiff -f $LOCAL $MERGED $REMOTE
+	cmd = mvimdiff -f $LOCAL $MERGED $REMOTE
 [merge]
 	tool = mvimdiff
 [mergetool]
   prompt = false
   keepBackup = false
 [difftool "gvimdiff"]
-  path = /usr/local/bin/mvimdiff
+  path = mvimdiff
 [diff]
   tool = vimdiff
   guitool = gvimdiff
