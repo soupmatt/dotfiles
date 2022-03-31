@@ -13,11 +13,11 @@ export USER_MEM_ARGS
 MAVEN_OPTS="-XX:MaxPermSize=128m -Xmx512M"
 export MAVEN_OPTS
 
-export CFLAGS="-g -Os"
+#export CFLAGS="-g -Os"
 export MAKEFLAGS="-j5"
 
 export PARALLEL_TEST_PROCESSORS=5
-export CC="/usr/bin/gcc" # default to using clang to compile stuff
+#export CC="/usr/bin/gcc" # default to using clang to compile stuff
 
 if [ -f $HOME/.profile_private ]; then
   . $HOME/.profile_private

@@ -3,7 +3,8 @@
 :bulk_threshold: 100
 :sources:
 - https://rubygems.org/
+# - http://gems-vibes.lob.vibes.com/
 :update_sources: true
 :verbose: true
 benchmark: false
-gem: --no-document
+gem: "--no-document"

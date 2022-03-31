@@ -1,9 +1,6 @@
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+#ZSH=$HOME/.oh-my-zsh
+ZSH=$(antibody path https://github.com/robbyrussell/oh-my-zsh)
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 # Set name of the theme to load.
@@ -16,7 +13,7 @@ ZSH_THEME="soupmatt"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -30,17 +27,30 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(alias-finder aws brew direnv docker docker-compose gem git-escape-magic knife osx powder redis-cli rake rake-fast soupmatt terraform)
+#plugins=(alias-finder aws brew direnv docker docker-compose gem git-escape-magic knife osx powder redis-cli rake rake-fast soupmatt terraform)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
+#add-zsh-hook -d preexec omz_termsupport_preexec
 
+
+#source <(antibody init)
+#antibody bundle < ~/.zsh_plugins.txt
+source "${HOME}/.zsh_plugins.sh"
 add-zsh-hook -d preexec omz_termsupport_preexec
+. /usr/local/opt/asdf/asdf.sh
+
+
+if type brew &>/dev/null; then
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
 
 alias knife="nocorrect knife"
 alias guard="nocorrect guard"
 alias rbenv="nocorrect rbenv"
 alias relish="nocorrect relish"
-alias prune="git branch -l --merged | grep -v master | xargs -n 1 git branch -d"
+alias prune="git branch -l --merged | grep -v master | grep -v main | xargs -n 1 git branch -d"
 
 export RAMDISK=$HOME/ramdisk
 export KNIFE_RELATIVE_PATH=cookbooks

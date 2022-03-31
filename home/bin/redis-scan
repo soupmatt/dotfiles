@@ -1,0 +1,80 @@
+#! /usr/bin/env ruby
+
+require 'rubygems'
+require 'getoptlong'
+require 'pp'
+
+opts = GetoptLong.new(
+  [ '--help', GetoptLong::NO_ARGUMENT ],
+  [ '--host', '-h', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
+  [ '--db', '-n', GetoptLong::REQUIRED_ARGUMENT ],
+)
+
+@host = 'localhost'
+@port = 6379
+@db = 0
+
+REDIS_REQUIREMENT_MESSAGE = <<-REDIS
+This script requires version 3.1 or later of the redis gem. To install it run this command:
+> gem install redis -v ">= 3.1"
+REDIS
+
+opts.each do |opt, arg|
+  case opt
+  when '--help'
+    puts <<-HELP
+Usage: redis-scan [OPTIONS]
+
+  -h, --host    the hostname or IP address of the sentinel you want to use (defaults to #{@sentinel_host})
+  -p, --port    the port the sentinel is listening on (defaults to #{@sentinel_port})
+  -n, --db      the redis database number you want to connect to
+  --help        print this help message and exit
+
+    HELP
+    puts REDIS_REQUIREMENT_MESSAGE
+    exit 0
+  when '--host'
+    @host = arg
+  when '--port'
+    @port = Integer(arg)
+  when '--db'
+    @db = Integer(arg)
+  end
+end
+
+begin
+  gem 'redis', '>= 3.1'
+  require 'redis'
+rescue Gem::MissingSpecError => e
+  puts REDIS_REQUIREMENT_MESSAGE
+  puts
+  puts e.message
+  exit 1
+end
+
+redis = Redis.new({
+  host: @host,
+  port: @port,
+  db: @db
+})
+
+puts "starting keyspace stats for db#{@db}"
+puts "  " + redis.info(:keyspace)["db#{@db}"]
+puts
+
+count = 0
+
+redis.scan_each do
+  count += 1
+  if (count % 10000) == 0
+    puts "#{count} keys scanned"
+  end
+end
+
+puts "#{count} total keys scanned"
+puts
+
+puts "keyspace stats after scan for db#{@db}"
+puts "  " + redis.info(:keyspace)["db#{@db}"]
+
