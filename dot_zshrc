@@ -56,3 +56,7 @@ export KNIFE_RELATIVE_PATH=cookbooks
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+if [ ! type _chezmoi &>/dev/null ]; then
+  eval "$(chezmoi completion zsh)"; compdef _chezmoi chezmoi
+fi
+
