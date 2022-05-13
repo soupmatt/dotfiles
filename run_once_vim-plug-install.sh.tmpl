@@ -1,4 +1,6 @@
+{{- if lookPath "vim" -}}
 #!/bin/bash
 
 # .vimrc.bundles hash: {{ print .chezmoi.homeDir "/.vimrc.bundles" | include | sha256sum }}
 vim -u "$HOME"/.vimrc.bundles +PlugUpdate +PlugClean! +qa
+{{- end -}}
