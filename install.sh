@@ -2,6 +2,11 @@
 
 set -e # -e: exit on error
 
+if [ $SPIN ]; then
+  echo "skipping actions on spin"
+  exit 0
+fi
+
 if [ ! "$(command -v chezmoi)" ]; then
   bin_dir="$HOME/.local/bin"
   chezmoi="$bin_dir/chezmoi"
