@@ -1,26 +1,27 @@
-{{- /* Checks if running interactively, which is not the case for GitHub Codespaces */ -}}
+{{- /* Checks if running interactively, which is not the case for GitHub Codespaces and spin */ -}}
 {{- $interactive := stdinIsATTY -}}
 
-{{- /* Initializes the name variable with a default value */ -}}
-{{- $name := "Matt Campbell" -}}
-{{- /* If name was previously set, reuses it */ -}}
-{{- if hasKey . "name" -}}
-{{-   $name = .name -}}
-{{- /* Otherwise, if running interactively, prompts for a name */ -}}
-{{- else if $interactive -}}
-{{-   $name = promptString "name" $name -}}
+{{- $spin := false -}}
+{{- if env "SPIN" -}}
+{{-   $spin = true -}}
 {{- end -}}
+{{- $work := false -}}
 
-{{- /* Does the same for the email */ -}}
+{{- /* Initializes the name variable */ -}}
+{{- $name := "Matt Campbell" -}}
+
+{{- /* figure out the email */ -}}
 {{- $email := "matt@soupmatt.com" -}}
 {{- if hasKey . "email" -}}
 {{-   $email = .email -}}
+{{- else if $spin -}}
+{{-   $email = "matt.campbell@shopify.com" -}}
 {{- else if $interactive -}}
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
 
 {{- if $interactive -}}
-{{-   writeToStdout "💡 Tip: you can re-enter your name and email with `chezmoi init --data=false`.\n" -}}
+{{-   writeToStdout "💡 Tip: you can re-enter your email with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
 
 sourceDir: "{{ .chezmoi.sourceDir }}"
@@ -28,3 +29,5 @@ sourceDir: "{{ .chezmoi.sourceDir }}"
 data:
   name: "{{ $name }}"
   email: "{{ $email }}"
+  spin: {{ $spin }}
+

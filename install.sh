@@ -2,9 +2,8 @@
 
 set -e # -e: exit on error
 
-if [ $SPIN ]; then
-  echo "skipping actions on spin"
-  exit 0
+if [[ ! -a ~/.zshrc.provided ]]; then
+  cp ~/.zshrc ~/.zshrc.provided
 fi
 
 if [ ! "$(command -v chezmoi)" ]; then

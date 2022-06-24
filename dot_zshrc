@@ -1,12 +1,16 @@
+if [[ -a ~/.zshrc.provided ]]; then
+  source ~/.zshrc.provided
+fi
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
+# ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="soupmatt"
+# ZSH_THEME="soupmatt"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -26,14 +30,13 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(soupmatt brew terraform knife docker docker-compose direnv gem redis-cli rake rake-fast aws git-escape-magic)
+plugins=(brew terraform knife direnv gem redis-cli rake rake-fast git-escape-magic)
 
 source $ZSH/oh-my-zsh.sh
-add-zsh-hook -d preexec omz_termsupport_preexec
 
-if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
-  . /usr/local/opt/asdf/asdf.sh
-fi
+# if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
+#   . /usr/local/opt/asdf/asdf.sh
+# fi
 
 if type brew &>/dev/null; then
   FPATH=/usr/local/share/zsh/site-functions:$FPATH
@@ -45,18 +48,10 @@ if type op &>/dev/null; then
   eval "$(op completion zsh)"; compdef _op op
 fi
 
-alias knife="nocorrect knife"
-alias guard="nocorrect guard"
-alias rbenv="nocorrect rbenv"
-alias relish="nocorrect relish"
-alias prune="git branch -l --merged | grep -v master | grep -v main | xargs -n 1 git branch -d"
-
-export RAMDISK=$HOME/ramdisk
-export KNIFE_RELATIVE_PATH=cookbooks
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-if ! type _chezmoi &>/dev/null; then
-  eval "$(chezmoi completion zsh)"; compdef _chezmoi chezmoi
+if type chezmoi &>/dev/null; then
+  if ! type _chezmoi &>/dev/null; then
+    eval "$(chezmoi completion zsh)"; compdef _chezmoi chezmoi
+  fi
 fi
 
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
