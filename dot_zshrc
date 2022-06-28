@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 if type brew &>/dev/null; then
-  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
   autoload -Uz compinit
   compinit
 fi
