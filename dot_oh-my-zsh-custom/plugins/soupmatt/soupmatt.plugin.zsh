@@ -1,7 +1,7 @@
-cv() { cd ~/dev/vibes/$1; }
-_cv() { _files -W ~/dev/vibes -/;  }
+cs() { cd ~/src/github.com/Shopify/$1; }
+_cs() { _files -W ~/src/github.com/Shopify -/;  }
 compdef _cv cv
 
-co() { cd ~/dev/opensource/$1; }
-_co() { _files -W ~/dev/opensource -/;  }
+cg() { cd ~/src/github.com/$1; }
+_cg() { _files -W ~/src/github.com -/;  }
 compdef _co co
