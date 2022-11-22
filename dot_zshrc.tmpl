@@ -54,6 +54,10 @@ fi
 if [[ -a "${HOME}/.1password/agent.sock" ]]; then
   export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
 fi
-{{- end }}
+{{ end -}}
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+{{ if .work -}}
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+{{ end -}}
