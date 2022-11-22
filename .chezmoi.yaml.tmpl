@@ -19,6 +19,9 @@
 {{- else if $interactive -}}
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
+{{- if contains "shopify.com" $email -}}
+{{-   $work = true -}}
+{{- end -}}
 
 {{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your email with `chezmoi init --data=false`.\n" -}}
@@ -30,4 +33,4 @@ data:
   name: "{{ $name }}"
   email: "{{ $email }}"
   spin: {{ $spin }}
-
+  work: {{ $work }}
