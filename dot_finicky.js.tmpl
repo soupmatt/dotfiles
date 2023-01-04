@@ -1,0 +1,32 @@
+{{ if and (eq .chezmoi.os "darwin") (stat "/usr/libexec/PlistBuddy") -}}
+// Use https://github.com/johnste/finicky to open Chrome Apps from URL clicks
+
+const chromeApp = ({ id }) => ({
+  browser: ({ urlString }) => ({
+    name: "Google Chrome",
+    args: [
+      `--app-id=${id}`,
+      `--app-launch-url-for-shortcuts-menu-item=${urlString}`,
+      // notice I'm not passing urlString as an array entry, since Chrome Application Shortcuts don't like that
+    ],
+  }),
+});
+
+{{ $apps := include "chrome_apps.yml" | fromYaml -}}
+{{ $homeDir := .chezmoi.homeDir -}}
+module.exports = {
+  defaultBrowser: "Google Chrome",
+  handlers: [
+  {{- range $appName, $hosts := $apps -}}
+    {{ $appPath := joinPath $homeDir "Applications/Chrome Apps.localized" (print $appName ".app") "Contents/Info.plist" -}}
+    {{ if stat $appPath -}}
+      {{ $appID := output "/usr/libexec/PlistBuddy" "-c" "Print:CrAppModeShortcutID" $appPath | trim }}
+    {
+      match: finicky.matchHostnames({{ mustToJson $hosts }}),
+      ...chromeApp({ id: "{{ $appID }}" }),
+    },
+    {{- end -}}
+  {{ end }}
+  ],
+};
+{{ end -}}
