@@ -16,7 +16,6 @@
 [push]
   autoSetupRemote = true
 
-{{ if not .spin -}}
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
@@ -26,5 +25,4 @@
   name = {{ .name }}
   email = {{ .email }}
 [include]
-  path = /Users/matt.campbell/.config/dev/gitconfig
-{{- end }}
+  path = {{ .chezmoi.homeDir }}/.config/dev/gitconfig
