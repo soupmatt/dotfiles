@@ -9,14 +9,16 @@
 		"args": { "VARIANT": "focal" }
 	},
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {},
+	"customizations": {
+		// Set *default* container specific settings.json values on container create.
+		"settings": {},
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"eamodio.gitlens",
-		"bungcip.better-toml"
-	],
+		// Add the IDs of extensions you want installed when the container is created.
+		"extensions": [
+			"eamodio.gitlens",
+			"bungcip.better-toml"
+		]
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
