@@ -3,7 +3,9 @@
 set -e # -e: exit on error
 
 if [[ ! -a ~/.zshrc.provided ]]; then
-  cp ~/.zshrc ~/.zshrc.provided
+  if [[ -a ~/.zshrc ]]; then
+    cp ~/.zshrc ~/.zshrc.provided
+  fi
 fi
 
 if [ ! "$(command -v chezmoi)" ]; then
