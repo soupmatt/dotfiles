@@ -30,7 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew 1password golang copyfile copypath gh terraform gem redis-cli rake rake-fast git-escape-magic soupmatt vscode)
+plugins=(brew 1password golang copyfile copypath gh terraform gem redis-cli rake rake-fast git-escape-magic soupmatt vscode vi-mode)
 
 source "$ZSH"/oh-my-zsh.sh
 
@@ -56,7 +56,18 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Options
+
+# Enable extended globbing
+setopt extendedglob
+
+# Allow [ or ] whereever you want
+unsetopt nomatch
+
+export VISUAL=vim
+export EDITOR=$VISUAL
+
 {{ if .work }}
 # make it so that gcloud sdk can load numpy
-CLOUDSDK_PYTHON_SITEPACKAGES=1
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
 {{ end }}
