@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(brew 1password golang copyfile copypath gh terraform gem redis-cli rake rake-fast git-escape-magic soupmatt vscode)
 
-source $ZSH/oh-my-zsh.sh
+source "$ZSH"/oh-my-zsh.sh
 
 # if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
 #   . /usr/local/opt/asdf/asdf.sh
@@ -55,3 +55,8 @@ if [[ -a "${HOME}/.1password/agent.sock" ]]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+{{ if .work }}
+# make it so that gcloud sdk can load numpy
+CLOUDSDK_PYTHON_SITEPACKAGES=1
+{{ end }}
