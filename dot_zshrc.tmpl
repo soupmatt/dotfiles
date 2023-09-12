@@ -2,6 +2,10 @@ if [[ -a ~/.zshrc.provided ]]; then
   source ~/.zshrc.provided
 fi
 
+{{ if and .work (eq .chezmoi.os "linux") -}}
+export SHELL=$(which zsh)
+{{ end -}}
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
