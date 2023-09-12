@@ -32,24 +32,32 @@ zstyle :omz:plugins:iterm2 shell-integration yes
 
 # keychain configuration
 zstyle :omz:plugins:keychain agents ssh
+zstyle :omz:plugins:keychain options --quiet
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew 1password golang copyfile copypath gh terraform rbenv gem redis-cli rake rake-fast git-escape-magic soupmatt vscode vi-mode iterm2 keychain)
+plugins=(brew 1password golang copyfile copypath gh terraform gem rbenv redis-cli rake rake-fast git-escape-magic soupmatt vi-mode iterm2 keychain)
+
+{{ if .work }}
+plugins+=(handshake)
+{{ end }}
+
+{{ if eq .chezmoi.os "darwin" }}
+plugins+=(vscode)
+{{ end }}
 
 source "$ZSH"/oh-my-zsh.sh
 
-# if [[ -f /usr/local/opt/asdf/asdf.sh ]]; then
-#   . /usr/local/opt/asdf/asdf.sh
-# fi
-
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-  autoload -Uz compinit
-  compinit
+  if $(brew --prefix asdf) &> /dev/null ; then
+    source $(brew --prefix asdf)/libexec/asdf.sh
+  fi
 fi
 
+# load chezmoi completions if we haven't already
+# this usually occurs when chezmoi wasn't installed
+# via brew
 if type chezmoi &>/dev/null; then
   if ! type _chezmoi &>/dev/null; then
     eval "$(chezmoi completion zsh)"; compdef _chezmoi chezmoi
@@ -70,6 +78,9 @@ unsetopt nomatch
 
 export VISUAL=vim
 export EDITOR=$VISUAL
+
+# enable tmux unicode support
+export ZSH_TMUX_UNICODE="true"
 
 {{ if .work }}
 # make it so that gcloud sdk can load numpy

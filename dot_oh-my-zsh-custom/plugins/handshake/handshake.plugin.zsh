@@ -1,0 +1,20 @@
+{{ if eq .chezmoi.os "linux" -}}
+HANDSHAKE_DIR=${HANDSHAKE_DIR:-$HOME}
+{{ else -}}
+HANDSHAKE_DIR=${HANDSHAKE_DIR:-$HOME/dev/handshake}
+{{ end -}}
+
+cdh() { cd $HANDSHAKE_DIR/$1; }
+_cdh() { _files -W $HANDSHAKE_DIR -/; }
+compdef _cdh cdh
+
+{{ if eq .chezmoi.os "darwin" -}}
+seira() {
+  cdh ops
+  bin/seira $@
+}
+
+alias spc='cdh ops; bin/seira production handshake pods connect --dedicated --command="bin/rails c"'
+alias ssc='cdh ops; bin/seira staging handshake pods connect --dedicated --command="bin/rails c"'
+alias start-rde='cdh dev-vm; ./begin'
+{{ end -}}

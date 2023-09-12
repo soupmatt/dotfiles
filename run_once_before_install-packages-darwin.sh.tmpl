@@ -1,0 +1,22 @@
+{{- if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+tap "homebrew/bundle"
+brew "chezmoi"
+brew "keychain"
+brew "lazygit"
+brew "zsh"
+brew "jq"
+brew "tmux"
+cask "1password-cli"
+cask "finicky"
+{{- if .work }}
+cask "google-cloud-sdk"
+brew "kubernetes-cli"
+brew "helm"
+brew "numpy"
+brew "rbenv"
+{{- end }}
+EOF
+{{- end -}}

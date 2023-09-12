@@ -1,0 +1,7 @@
+# compdef seira
+
+_seira() {
+  local -a envs
+  envs=(
+  )
+}

@@ -1,10 +1,12 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
+# apt packages
+sudo apt update
+sudo apt install -y jq keychain
+
+# lazygit
 LAZYGIT_VERSION={{ (gitHubLatestRelease "jesseduffield/lazygit").TagName | trimPrefix "v" }}
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 sudo tar xf lazygit.tar.gz -C /usr/local/bin lazygit
 rm lazygit.tar.gz
-{{ else if eq .chezmoi.os "darwin" -}}
-#!/bin/bash
-brew install lazygit
 {{ end -}}
