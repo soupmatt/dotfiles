@@ -16,7 +16,7 @@ SESSIONEXISTS=$(tmux list-sessions | grep $SESSION)
 if [ "$SESSIONEXISTS" = "" ]
 then
     # start new session
-    tmux new-session -d -s $SESSION
+    tmux new-session -d -s $SESSION -n apps
 
     # database
     tmux send-keys 'bin/comp db up' C-m
