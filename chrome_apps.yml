@@ -1,7 +1,10 @@
 ---
-  Gmail:
-    - mail.google.com
-  Google Calendar:
-    - calendar.google.com
-  Google Meet:
-    - meet.google.com
+Gmail:
+  - mail.google.com
+Google Calendar:
+  - calendar.google.com
+Google Meet:
+  - meet.google.com
+LinkedIn:
+  - linkedin.com
+  - lnkd.in
