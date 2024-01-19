@@ -2,7 +2,7 @@
 #!/bin/bash
 # apt packages
 sudo apt update
-sudo apt install -y jq keychain
+sudo apt install -y jq keychain direnv
 
 # lazygit
 LAZYGIT_VERSION={{ (gitHubLatestRelease "jesseduffield/lazygit").TagName | trimPrefix "v" }}
