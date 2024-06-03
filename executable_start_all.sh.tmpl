@@ -19,7 +19,7 @@ then
     tmux new-session -d -s $SESSION -n apps
 
     # database
-    tmux send-keys 'bin/comp db up' C-m
+    tmux send-keys 'bin/comp es_tools up' C-m
     sleep 5s
     tmux split-window -f
 
