@@ -30,10 +30,11 @@
 # More examples can be found here:
 #  https://developer.1password.com/docs/ssh/agent/config
 [[ssh-keys]]
-vault = "Private"
 {{ if .work -}}
-account = "team-handshake"
+vault = "Employee"
+account = "Shopify"
 {{ else }}
+vault = "Private"
 account = "Matt Campbell's Family"
 {{- end -}}
 {{- end -}}

@@ -16,7 +16,10 @@
 [push]
   autoSetupRemote = true
   default = upstream
+[pull]
+  rebase = true
 
+{{ if not .spin -}}
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
@@ -25,5 +28,6 @@
 [user]
   name = {{ .name }}
   email = {{ .email }}
-[pull]
-  rebase = true
+[include]
+  path = {{ .chezmoi.homeDir }}/.config/dev/gitconfig
+{{- end }}

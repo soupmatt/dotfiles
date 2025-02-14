@@ -41,10 +41,10 @@ zstyle :omz:plugins:keychain options --quiet
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(direnv asdf brew 1password golang copyfile copypath gh terraform gem rbenv redis-cli rake rake-fast git-escape-magic soupmatt vi-mode iterm2 keychain)
+plugins=(direnv asdf brew 1password golang copyfile copypath gh gem rake rake-fast git-escape-magic soupmatt vi-mode iterm2 keychain)
 
-{{ if .work -}}
-plugins+=(handshake)
+{{ if not .work -}}
+plugins+=(rbenv redis-cli terraform)
 {{ end -}}
 
 {{- if eq .chezmoi.os "darwin" -}}
@@ -52,12 +52,6 @@ plugins+=(vscode)
 {{ end -}}
 
 source "$ZSH"/oh-my-zsh.sh
-
-if type brew &>/dev/null; then
-  if $(brew --prefix asdf) &> /dev/null ; then
-    source $(brew --prefix asdf)/libexec/asdf.sh
-  fi
-fi
 
 # load chezmoi completions if we haven't already
 # this usually occurs when chezmoi wasn't installed
@@ -68,9 +62,11 @@ if type chezmoi &>/dev/null; then
   fi
 fi
 
-# if [[ -a "${HOME}/.1password/agent.sock" ]]; then
-#   export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
-# fi
+{{ if not .work -}}
+if [[ -a "${HOME}/.1password/agent.sock" ]]; then
+  export SSH_AUTH_SOCK="${HOME}/.1password/agent.sock"
+fi
+{{ end -}}
 
 # Options
 
@@ -87,11 +83,9 @@ export EDITOR=$VISUAL
 export ZSH_TMUX_UNICODE="true"
 
 {{ if .work -}}
-# make it so that gcloud sdk can load numpy
-export CLOUDSDK_PYTHON_SITEPACKAGES=1
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
-# force seira to use teleport
-export SEIRA_TELEPORT_ENABLED=true
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 {{ end -}}
 
 export PATH=$PATH:$HOME/git-custom-commands

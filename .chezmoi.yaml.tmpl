@@ -1,6 +1,10 @@
 {{- /* Checks if running interactively, which is not the case for GitHub Codespaces, Gitpod, etc */ -}}
 {{- $interactive := stdinIsATTY -}}
 
+{{- $spin := false -}}
+{{- if env "SPIN" -}}
+{{-   $spin = true -}}
+{{- end -}}
 {{- $work := false -}}
 
 {{- /* Initializes the name variable */ -}}
@@ -10,10 +14,12 @@
 {{- $email := "matt@soupmatt.com" -}}
 {{- if hasKey . "email" -}}
 {{-   $email = .email -}}
+{{- else if $spin -}}
+{{-   $email = "matt.campbell@shopify.com" -}}
 {{- else if $interactive -}}
 {{-   $email = promptString "email" $email -}}
 {{- end -}}
-{{- if contains "joinhandshake.com" $email -}}
+{{- if contains "shopify.com" $email -}}
 {{-   $work = true -}}
 {{- end -}}
 
@@ -26,4 +32,5 @@ sourceDir: "{{ .chezmoi.sourceDir }}"
 data:
   name: "{{ $name }}"
   email: "{{ $email }}"
+  spin: {{ $spin }}
   work: {{ $work }}
